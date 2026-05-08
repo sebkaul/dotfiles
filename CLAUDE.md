@@ -39,7 +39,7 @@ git clone <repo-url> ~/dotfiles
 cd ~/dotfiles && ./install.sh
 
 # 2. Clone and deploy private dotfiles (monitors.conf, local.zsh, private .desktop files)
-git clone http://YOUR_SERVER:3000/sebkaul/dotfiles-private.git ~/dotfiles/private
+git clone https://github.com/sebkaul/dotfiles-private.git ~/dotfiles/private
 ~/dotfiles/private/deploy.sh
 # Then edit ~/.config/hypr/monitors.conf for this machine's displays
 
@@ -92,7 +92,7 @@ source = ~/.config/hypr/monitors.conf
 
 ### Private aliases and settings
 
-`~/.local.zsh` is tracked in the **private Gitea repo** (`dotfiles-private`), not this public repo.
+`~/.local.zsh` is tracked in the **private GitHub repo** (`dotfiles-private`), not this public repo.
 It is symlinked to `~/dotfiles/private/local.zsh` by `private/deploy.sh`.
 
 `.zshrc` sources it automatically:
@@ -135,7 +135,7 @@ stow -D myapp      # removes symlinks, real files stay in dotfiles/
 |---|---|
 | `monitors.conf`, `workspaces.conf` | Machine-specific display/workspace setup |
 | `tmux/plugins/` | Installed at runtime by TPM |
-| `private/` | Separate private Gitea repo — never part of this public repo |
+| `private/` | Separate private GitHub repo — never part of this public repo |
 | `~/Wallpapers/` | Synced from server via `sync-wallpapers.sh` — binary blobs don't belong in git |
 | Browser profiles (Brave, Firefox) | User data, not config |
 | App state (Signal, Slack, Discord, Obsidian, Notion) | State, not config |
