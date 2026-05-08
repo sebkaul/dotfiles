@@ -1,0 +1,8 @@
+# ~/.local/share/applications/blackboard.desktop
+[Desktop Entry]
+Name=Periodic Table
+Exec=brave-beta --new-window ptable.com
+Icon=/home/bastel/.local/share/icons/ico/periodic.ico
+Type=Application
+Categories=Network;
+

@@ -1,0 +1,8 @@
+# ~/.local/share/applications/google-calendar.desktop
+[Desktop Entry]
+Name=Google Calendar
+Exec=brave-beta --new-window https://calendar.google.com/
+Icon=/home/bastel/.local/share/icons/ico/googlecalendar.ico
+Type=Application
+Categories=Network;
+

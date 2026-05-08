@@ -1,0 +1,8 @@
+# ~/.local/share/applications/blackboard.desktop
+[Desktop Entry]
+Name=A001  Pianorom
+Exec=brave-beta --new-window "https://tp.educloud.no/ntnu/app/schedule?semester=26v&scheduleType=room&filterOpen=true&summary=true&pastWeeks=false&tab=calendar&room=105TU1.131&area=10000&building=105"
+Icon=/home/bastel/.local/share/icons/ico/piano.ico
+Type=Application
+Categories=Network;
+

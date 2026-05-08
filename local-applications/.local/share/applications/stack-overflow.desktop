@@ -1,0 +1,8 @@
+# ~/.local/share/applications/stack-overflow.desktop
+[Desktop Entry]
+Name=Stack Overflow
+Exec=brave-beta https://stackoverflow.com/
+Icon=/home/bastel/.local/share/icons/ico/stackoverflow.ico
+Type=Application
+Categories=Network;
+

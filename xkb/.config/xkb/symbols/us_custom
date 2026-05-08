@@ -1,0 +1,9 @@
+partial alphanumeric_keys
+xkb_symbols "ae_keys" {
+    include "us(basic)"
+
+    key <AC09> { [ semicolon, colon, ae, AE ] };       // ; → æ
+    key <AC10> { [ apostrophe, quotedbl, oslash, Oslash ] }; // ' → ø
+    key <AC12> { [ bracketright, braceleft, aring, Aring ] }; // ] → å
+};
+

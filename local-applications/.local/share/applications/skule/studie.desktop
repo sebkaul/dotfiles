@@ -1,0 +1,8 @@
+# ~/.local/share/applications/blackboard.desktop
+[Desktop Entry]
+Name=Studieløp: Ingeniør, Kjemi
+Exec=brave-beta --new-window https://www.ntnu.no/studier/fthingkj
+Icon=/home/bastel/.local/share/icons/png/ntnu.png
+Type=Application
+Categories=Network;
+

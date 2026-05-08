@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ChatGPT
+Exec=brave-beta --new-window https://chat.openai.com/
+Icon=/home/bastel/.local/share/icons/ico/chatgptgreen.ico
+Type=Application
+Categories=Network;
+

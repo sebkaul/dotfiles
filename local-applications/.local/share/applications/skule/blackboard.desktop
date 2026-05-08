@@ -1,0 +1,8 @@
+# ~/.local/share/applications/blackboard.desktop
+[Desktop Entry]
+Name=NTNU Blackboard
+Exec=brave-beta --new-window https://ntnu.blackboard.com/
+Icon=/home/bastel/.local/share/icons/ico/blackboard.ico
+Type=Application
+Categories=Network;
+

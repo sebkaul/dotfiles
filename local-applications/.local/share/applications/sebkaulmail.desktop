@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Outlook Personleg (sebkaul)
+Exec=brave-beta --profile-directory="Default" --app=https://outlook.live.com/mail/0/
+Icon=/home/bastel/.local/share/icons/ico/personalmail.ico
+Type=Application
+

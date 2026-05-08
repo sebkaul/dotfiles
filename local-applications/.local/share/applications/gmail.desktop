@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Gmail
+Exec=brave-beta --new-window https://mail.google.com/
+Icon=/home/bastel/.local/share/icons/ico/gmail.ico
+Type=Application
+Categories=Network;
+

@@ -1,0 +1,7 @@
+# ~/.local/share/applications/youtube.desktop
+[Desktop Entry]
+Name=Semester Obsidian
+Exec=alacritty --working-directory /home/bastel/Semester
+Type=Application
+Categories=Network;
+

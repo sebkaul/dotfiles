@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Spond
+Exec=brave-beta https://spond.com/client
+Icon=/home/bastel/.local/share/icons/png/spond.png
+Type=Application
+Categories=Network;
+

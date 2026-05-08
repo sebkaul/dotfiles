@@ -1,0 +1,8 @@
+# ~/.local/share/applications/snapchat.desktop
+[Desktop Entry]
+Name=Snapchat
+Exec=brave-beta https://web.snapchat.com/
+Icon=/home/bastel/.local/share/icons/ico/snapchat.ico
+Type=Application
+Categories=Network;
+

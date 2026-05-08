@@ -1,0 +1,7 @@
+#map j feedkeys "<C-Down>"
+#map k feedkeys "<C-Up>"
+
+map j scroll down
+map k scroll up
+
+set scroll-step 100

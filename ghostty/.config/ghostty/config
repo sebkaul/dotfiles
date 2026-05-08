@@ -1,0 +1,62 @@
+# Ghostty config — translated from alacritty.toml
+# Place at: ~/.config/ghostty/config
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+command = /home/bastel/.local/bin/alacritty-tmux.sh
+
+# ── Environment ───────────────────────────────────────────────────────────────
+# Ghostty sets TERM automatically to xterm-256color-compatible value.
+# For full colour support (recommended) use:
+#term = xterm-256color
+
+# ── Font ──────────────────────────────────────────────────────────────────────
+font-family = JetBrainsMono Nerd Font
+font-size = 11
+
+# ── Window ────────────────────────────────────────────────────────────────────
+window-padding-x = 10
+window-padding-y = 10
+
+# Buttonless (macOS-style, hides title bar/decorations). On Linux/Hyprland
+# window decorations are typically controlled by the compositor, but this
+# tells Ghostty not to draw its own CSD chrome:
+window-decoration = false
+
+confirm-close-surface = false
+
+# Uncomment to enable background transparency (0.0 = fully transparent, 1.0 = opaque):
+background-opacity = 0.8
+
+# ── Colours ───────────────────────────────────────────────────────────────────
+background = #011423
+foreground = #CBE0F0
+
+# Cursor
+cursor-color = #479CBB
+cursor-text  = #011423
+cursor-style = block
+#cursor-style-blink = false
+mouse-hide-while-typing = true
+custom-shader = shaders/cursor_smear_fade.glsl
+
+
+# Normal colours (0–7)
+palette = 0=#100e23
+palette = 1=#ff5458
+palette = 2=#62d196
+palette = 3=#ffb378
+palette = 4=#65b2ff
+palette = 5=#906cff
+palette = 6=#63f2f1
+palette = 7=#cbe3e7
+
+# Bright colours (8–15)
+palette = 8=#565575
+palette = 9=#ff8080
+palette = 10=#95ffa4
+palette = 11=#ffe9aa
+palette = 12=#91ddff
+palette = 13=#c991e1
+palette = 14=#aaffe4
+palette = 15=#e8fafc
+

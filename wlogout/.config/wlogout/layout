@@ -1,0 +1,35 @@
+{
+    "label" : "lock-dark",
+    "action" : "swaylock -f -c 000000 --scaling fill --clock --indicator",
+    "text" : "        ",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "logout",
+    "text" : "        ",
+}
+{
+    "label" : "lock-image",
+    "action" : "swaylock --image ~/Wallpapers/tuksgrey.jpg --scaling fill",
+    "text" : "        ",
+    "keybind" : "o"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "        ",
+    "keybind" : "s"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl suspend",
+    "text" : "        ",
+    "keybind" : "h"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "        ",
+    "keybind" : "r"
+}

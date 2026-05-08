@@ -1,0 +1,8 @@
+# ~/.local/share/applications/fsweb.desktop
+[Desktop Entry]
+Name=FSWEB Studentweb
+Exec=brave-beta --new-window https://fsweb.no/studentweb/?faces-redirect=true
+Icon=/home/bastel/.local/share/icons/ico/fsweb.ico
+Type=Application
+Categories=Network;
+

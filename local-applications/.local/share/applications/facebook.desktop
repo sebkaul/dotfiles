@@ -1,0 +1,8 @@
+# ~/.local/share/applications/facebook.desktop
+[Desktop Entry]
+Name=Facebook
+Exec=brave-beta https://www.facebook.com/
+Icon=/home/bastel/.local/share/icons/ico/facebook.ico
+Type=Application
+Categories=Network;
+

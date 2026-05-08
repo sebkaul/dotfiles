@@ -1,0 +1,8 @@
+# ~/.local/share/applications/wikipedia.desktop
+[Desktop Entry]
+Name=Wikipedia
+Exec=brave-beta https://wikipedia.org/
+Icon=/home/bastel/.local/share/icons/ico/wikipedia.ico
+Type=Application
+Categories=Network;
+

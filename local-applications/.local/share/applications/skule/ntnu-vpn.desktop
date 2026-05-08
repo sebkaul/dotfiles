@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=NTNU VPN Toggle
+Comment=Toggle NTNU VPN connection on/off
+Exec=/home/bastel/.local/bin/ntnu-vpn.sh
+Icon=network-vpn
+Terminal=false
+Categories=Network;Utility;
+Keywords=vpn;ntnu;network;
