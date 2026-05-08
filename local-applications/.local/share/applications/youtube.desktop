@@ -1,0 +1,8 @@
+# ~/.local/share/applications/youtube.desktop
+[Desktop Entry]
+Name=YouTube
+Exec=brave-beta --new-window https://youtube.com/
+Icon=/home/bastel/.local/share/icons/ico/youtube.ico
+Type=Application
+Categories=Network;
+

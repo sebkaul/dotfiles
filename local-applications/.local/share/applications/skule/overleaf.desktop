@@ -1,0 +1,8 @@
+# ~/.local/share/applications/overleaf.desktop
+[Desktop Entry]
+Name=Overleaf
+Exec=brave-beta https://www.overleaf.com/project
+Icon=/home/bastel/.local/share/icons/png/overleaf.png
+Type=Application
+Categories=Network;
+

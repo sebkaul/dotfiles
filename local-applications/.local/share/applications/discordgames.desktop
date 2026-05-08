@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Game 418076578333851669
+Exec=/opt/BadlionClient/BadlionClient.bin %u
+Type=Application
+NoDisplay=true
+Categories=Discord;Games;
+MimeType=x-scheme-handler/discord-418076578333851669;

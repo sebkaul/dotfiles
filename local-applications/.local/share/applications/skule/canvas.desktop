@@ -1,0 +1,8 @@
+# ~/.local/share/applications/blackboard.desktop
+[Desktop Entry]
+Name=NTNU Canvas
+Exec=brave-beta --new-window https://canvas.ntnu.no/
+Icon=/home/bastel/.local/share/icons/ico/canvas.ico
+Type=Application
+Categories=Network;
+

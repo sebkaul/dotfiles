@@ -1,0 +1,13 @@
+[Added Associations]
+image/vnd.microsoft.icon=com.brave.Browser.beta.desktop;
+application/x-zerosize=chromium.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;brave-browser-beta.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop;brave-browser-beta.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
+
+[Default Applications]
+x-scheme-handler/webcal=brave-browser-beta.desktop
+application/x-zerosize=chromium.desktop
+application/pdf=brave-browser-beta.desktop
+x-scheme-handler/figma=figma-linux.desktop
+x-scheme-handler/terminal=ghostty.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop

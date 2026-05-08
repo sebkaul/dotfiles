@@ -1,0 +1,8 @@
+# ~/.local/share/applications/google-drive.desktop
+[Desktop Entry]
+Name=Google Drive
+Exec=brave-beta https://drive.google.com/
+Icon=/home/bastel/.local/share/icons/ico/googledrive.ico
+Type=Application
+Categories=Network;
+

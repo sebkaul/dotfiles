@@ -1,0 +1,8 @@
+# ~/.local/share/applications/github.desktop
+[Desktop Entry]
+Name=GitHub
+Exec=brave-beta https://github.com/
+Icon=/home/bastel/.local/share/icons/ico/github.ico
+Type=Application
+Categories=Network;
+

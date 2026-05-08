@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+SOCKET="/tmp/mpv-socket"
+
+if [[ "$1" == "play" ]]; then
+  echo '{ "command": ["set_property", "pause", false] }' | socat - "$SOCKET"
+  exit
+fi
+
+if [[ "$1" == "pause" ]]; then
+  echo '{ "command": ["set_property", "pause", true] }' | socat - "$SOCKET"
+  exit
+fi
+
+if [[ "$1" == "toggle" ]]; then
+  echo '{ "command": ["cycle", "pause"] }' | socat - "$SOCKET"
+  exit
+fi
+
+if [[ "$1" == "quit" ]]; then
+  echo '{ "command": ["quit"] }' | socat - "$SOCKET"
+  exit
+fi
+
+exec mpv "$@" --input-ipc-server="$SOCKET"

@@ -1,0 +1,66 @@
+/* Root variables for colors, spacing, fonts */
+:root {
+  /* background of notification panel */
+  @define-color cc-bg rgba(30, 30, 30, 0.9);
+
+  /* notification colors */
+  @define-color noti-bg rgba(24, 24, 24, 0.85);
+  @define-color noti-bg-hover rgba(40, 40, 40, 0.9);
+  @define-color noti-border rgba(120, 120, 120, 0.3);
+
+  @define-color noti-text rgba(235, 235, 235, 1);
+  @define-color noti-urgent rgba(240, 80, 80, 1);
+
+  @define-color btn-bg rgba(50, 50, 50, 0.8);
+  @define-color btn-bg-hover rgba(70, 70, 70, 0.9);
+  @define-color btn-text rgba(255, 255, 255, 1);
+
+  /* radius and spacing */
+  @define-color border-radius 6px;
+  @define-color border-size 1px;
+}
+
+/* main panel */
+.swaync-window {
+  background: @cc-bg;
+  padding: 10px;
+  border-radius: @border-radius;
+}
+
+/* per-notification card */
+.notification {
+  background: @noti-bg;
+  color: @noti-text;
+  border: @border-size solid @noti-border;
+  border-radius: @border-radius;
+  margin: 6px 0;
+  padding: 8px;
+}
+
+/* hover state */
+.notification:hover {
+  background: @noti-bg-hover;
+}
+
+/* urgent notifications */
+.notification.critical {
+  border: @border-size solid @noti-urgent;
+  color: @noti-urgent;
+}
+
+/* notification content row */
+.notification-content {
+  padding: 4px;
+}
+
+/* close button */
+.close-button {
+  background: @btn-bg;
+  color: @btn-text;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
+
+.close-button:hover {
+  background: @btn-bg-hover;
+}

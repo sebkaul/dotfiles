@@ -1,0 +1,8 @@
+# ~/.local/share/applications/instagram.desktop
+[Desktop Entry]
+Name=Instagram
+Exec=brave-beta https://www.instagram.com/
+Icon=/home/bastel/.local/share/icons/ico/instagram.ico
+Type=Application
+Categories=Network;
+

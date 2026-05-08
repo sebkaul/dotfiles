@@ -1,0 +1,8 @@
+# ~/.local/share/applications/sbm-no.desktop
+[Desktop Entry]
+Name=SBM
+Exec=brave-beta https://www.sbm.no/
+Icon=/home/bastel/.local/share/icons/ico/bank.ico
+Type=Application
+Categories=Network;
+
