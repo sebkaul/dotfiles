@@ -74,7 +74,7 @@ Everything inside `~/dotfiles/` except what is listed in `.gitignore`:
 ### Git history
 The history has been deliberately kept minimal. All previous commits containing
 private data (SSH hosts, IPs, wrong email addresses) were wiped by nuking `.git`
-and recommitting from scratch. There is currently ONE commit in history.
+and recommitting from scratch.
 
 ### Day-to-day git workflow
 When you edit a config file (e.g., change your hyprland keybindings):
@@ -151,7 +151,7 @@ from `~/dotfiles/` creates the symlinks shown.
 | Package | Symlinks created | Contents |
 |---|---|---|
 | `local-bin` | `~/.local/bin/alacritty-tmux.sh`, `battery_notify.sh`, `mpvv` | Custom shell scripts. Other files in `~/.local/bin/` (pip scripts, claude binary) are left unmanaged. |
-| `local-applications` | `~/.local/share/applications/*.desktop` (individual symlinks) | Custom app launchers: web apps (Gmail, YouTube, etc.), container shortcuts (archbox, debianbox), school apps (skule/). Browser-generated and game entries are NOT tracked. |
+| `local-applications` | `~/.local/share/applications/*.desktop` (individual symlinks) | Custom app launchers: web apps (Gmail, YouTube, etc.), school tools (skule/). Private shortcuts (SSH containers, Immich, private mail) live in `dotfiles-private` instead. |
 
 ---
 
@@ -167,10 +167,8 @@ This directory is a **separate private GitHub repo**. It is never part of the pu
 ├── monitors.conf        ← monitor layout for THIS machine (machine-specific)
 ├── sync.sh              ← git add + commit + push to GitHub
 ├── deploy.sh            ← wire up private files after cloning on a new machine
-└── applications/
-    ├── ncarch.desktop   ← Nextcloud Arch shortcut (contains private IP)
-    ├── ncdebian.desktop ← Nextcloud Debian shortcut (contains private IP)
-    └── passwordmanager.desktop ← Brave PWA (machine/profile-specific)
+└── applications/        ← private .desktop launchers (SSH containers, Immich,
+                            Nextcloud, NTNU mail, personal timetable, etc.)
 ```
 
 ### `local.zsh`
@@ -206,20 +204,11 @@ Run this on a new machine after cloning the private repo:
 # Symlinks private .desktop files into ~/.local/share/applications/
 ```
 
-### First-time GitHub setup
+### Cloning the private repo on a new machine
 ```bash
-# 1. Create a private repo called "dotfiles-private" on GitHub
-
-# 2. On the machine that already has ~/dotfiles/private/:
-cd ~/dotfiles/private
-git init
-git remote add origin https://github.com/sebkaul/dotfiles-private.git
-git add -A && git commit -m "init: private dotfiles"
-git push -u origin main
-
-# 3. On every other machine going forward:
 git clone https://github.com/sebkaul/dotfiles-private.git ~/dotfiles/private
 ~/dotfiles/private/deploy.sh
+# Then edit ~/.config/hypr/monitors.conf for this machine's displays
 ```
 
 ---
@@ -386,7 +375,7 @@ branches to stay up to date.
 | All tracked configs | `~/dotfiles/<package>/.config/<name>/` |
 | Install script (new machine) | `~/dotfiles/install.sh` |
 | Migration script (first machine) | `~/dotfiles/migrate.sh` |
-| Architecture docs | `~/dotfiles/CLAUDE.md` |
+| AI assistant instructions | `~/dotfiles/CLAUDE.md` |
 | Private aliases | `~/dotfiles/private/local.zsh` (symlinked to `~/.local.zsh`) |
 | Monitor config | `~/.config/hypr/monitors.conf` (copy of `~/dotfiles/private/monitors.conf`) |
 | Private push script | `~/dotfiles/private/sync.sh` |
