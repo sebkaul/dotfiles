@@ -10,7 +10,7 @@ The system is split into three separate pieces:
 
 ```
 ~/dotfiles/             ← PUBLIC git repo (GitHub). All shareable config.
-~/dotfiles/private/     ← PRIVATE git repo (self-hosted Gitea). Secrets + machine-specific files.
+~/dotfiles/private/     ← PRIVATE git repo (GitHub, private). Secrets + machine-specific files.
 ~/Wallpapers/           ← Synced from server via rsync. Not in git.
 ```
 
@@ -157,8 +157,7 @@ from `~/dotfiles/` creates the symlinks shown.
 
 ## Tool 4: The Private System (`~/dotfiles/private/`)
 
-This directory is a **separate private git repo** hosted on the self-hosted Gitea instance.
-It is never part of the public dotfiles repo — `.gitignore` excludes `private/`.
+This directory is a **separate private GitHub repo**. It is never part of the public dotfiles repo — `.gitignore` excludes `private/`.
 
 ### Structure
 
@@ -166,7 +165,7 @@ It is never part of the public dotfiles repo — `.gitignore` excludes `private/
 ~/dotfiles/private/
 ├── local.zsh            ← private shell aliases (SSH hosts, server IPs, proxies)
 ├── monitors.conf        ← monitor layout for THIS machine (machine-specific)
-├── sync.sh              ← git add + commit + push to Gitea
+├── sync.sh              ← git add + commit + push to GitHub
 ├── deploy.sh            ← wire up private files after cloning on a new machine
 └── applications/
     ├── ncarch.desktop   ← Nextcloud Arch shortcut (contains private IP)
@@ -192,7 +191,7 @@ nvim ~/dotfiles/private/monitors.conf
 ```
 `deploy.sh` copies (not symlinks) this to `~/.config/hypr/monitors.conf`.
 
-### `sync.sh` — pushing changes to Gitea
+### `sync.sh` — pushing changes to GitHub
 ```bash
 ~/dotfiles/private/sync.sh              # auto-commit + push
 ~/dotfiles/private/sync.sh "message"   # custom commit message
@@ -207,19 +206,19 @@ Run this on a new machine after cloning the private repo:
 # Symlinks private .desktop files into ~/.local/share/applications/
 ```
 
-### First-time Gitea setup
+### First-time GitHub setup
 ```bash
-# 1. On your server: create a private repo called "dotfiles-private" in Gitea
+# 1. Create a private repo called "dotfiles-private" on GitHub
 
 # 2. On the machine that already has ~/dotfiles/private/:
 cd ~/dotfiles/private
 git init
-git remote add origin http://YOUR_SERVER:3000/sebkaul/dotfiles-private.git
+git remote add origin https://github.com/sebkaul/dotfiles-private.git
 git add -A && git commit -m "init: private dotfiles"
 git push -u origin main
 
 # 3. On every other machine going forward:
-git clone http://YOUR_SERVER:3000/sebkaul/dotfiles-private.git ~/dotfiles/private
+git clone https://github.com/sebkaul/dotfiles-private.git ~/dotfiles/private
 ~/dotfiles/private/deploy.sh
 ```
 
@@ -235,7 +234,7 @@ git clone https://github.com/sebkaul/dotfiles.git ~/dotfiles
 cd ~/dotfiles && ./install.sh
 
 # 3. Clone and deploy private files (monitors.conf, local.zsh, private .desktop files)
-git clone http://YOUR_SERVER:3000/sebkaul/dotfiles-private.git ~/dotfiles/private
+git clone https://github.com/sebkaul/dotfiles-private.git ~/dotfiles/private
 ~/dotfiles/private/deploy.sh
 # Edit monitors.conf for this machine's displays:
 hyprctl monitors all
@@ -281,7 +280,7 @@ cd ~/dotfiles && git pull
 ### Updating private aliases
 ```bash
 nvim ~/dotfiles/private/local.zsh
-# Then push to Gitea:
+# Then push to GitHub:
 ~/dotfiles/private/sync.sh
 # Pull on other machines:
 cd ~/dotfiles/private && git pull
@@ -369,7 +368,7 @@ branches to stay up to date.
 | `~/.config/hypr/workspaces.conf` | Machine-specific workspace assignments |
 | `~/.config/tmux/plugins/` | Installed at runtime by TPM (Tmux Plugin Manager) |
 | `~/.local.zsh` | Symlink into `~/dotfiles/private/` — not a real file to track |
-| `~/dotfiles/private/` | Separate private Gitea repo — never part of the public repo |
+| `~/dotfiles/private/` | Separate private GitHub repo — never part of the public repo |
 | `~/dotfiles/private/applications/*.desktop` | Contain private Tailscale IPs |
 | `~/Wallpapers/` | Synced from server via `sync-wallpapers.sh` — binary files bloat git history |
 | Browser profiles (Brave, Firefox) | User data, session state — not configuration |
@@ -396,4 +395,4 @@ branches to stay up to date.
 | Wallpaper sync script | `~/dotfiles/sync-wallpapers.sh` |
 | Wallpapers | `~/Wallpapers/` (populated by sync-wallpapers.sh) |
 | Public git remote | `https://github.com/sebkaul/dotfiles.git` |
-| Private git remote | `http://YOUR_SERVER:3000/sebkaul/dotfiles-private.git` |
+| Private git remote | `https://github.com/sebkaul/dotfiles-private.git` |
