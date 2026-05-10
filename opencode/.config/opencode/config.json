@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "idun-llm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "IDUN LLM",
+      "options": {
+        "baseURL": "https://llm.hpc.ntnu.no/v1",
+        "apiKey": "sk--AeVnwpF-HfPNJcJc85FVQ"
+      },
+      "models": {
+        "openai/gpt-oss-120b": {
+          "name": "GPT OSS 120B"
+        },
+        "Qwen/Qwen3-Coder-Next-FP8": {
+          "name": "Qwen3 Coder Next FP8"
+        },
+        "mistralai/Mistral-Large-3-675B-Instruct-2512-NVFP4": {
+          "name": "Mistral Large 3 675B Instruct"
+        },
+        "zai-org/GLM-4.7-FP8": {
+          "name": "GLM 4.7 FP8"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "Kimi K2.5"
+        }
+      }
+    }
+  }
+}
