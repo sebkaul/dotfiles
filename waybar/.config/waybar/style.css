@@ -18,10 +18,18 @@ tooltip {
   border-width: 1px;
   border-style: solid;
   border-color: #11111b;
+  min-height: 0;
+}
+
+tooltip * {
+  min-height: 0;
+  color: #cdd6f4;
+  padding: 2px 6px;
 }
 
 #custom-power_profile,
 #custom-weather,
+#custom-media,
 #window,
 #clock,
 #battery,
@@ -175,6 +183,34 @@ tooltip {
   margin-right: 7px;
   border-left: 0px;
 }
+#custom-media {
+  border-radius: 10px;
+  margin-right: 7px;
+  color: #cdd6f4;
+}
+
+#custom-media.none {
+  color: #6c7086;
+  opacity: 0.6;
+}
+
+#custom-media.spotify,
+#custom-media.spotify:hover {
+  color: #a6e3a1;
+  border-color: #a6e3a1;
+}
+
+#custom-media.youtube,
+#custom-media.youtube:hover {
+  color: #f38ba8;
+  border-color: #f38ba8;
+}
+
+#custom-media.default:hover {
+  color: #cdd6f4;
+  border-color: #cdd6f4;
+}
+
 /*
 #tray > .passive {
   -gtk-icon-effect: dim;

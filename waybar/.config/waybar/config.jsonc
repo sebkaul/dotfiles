@@ -7,8 +7,7 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": ["clock", "custom/weather", "hyprland/workspaces", "custom/wallpaper-engine"],
-    //"modules-center": ["hyprland/window"],
-    "modules-right": ["backlight","pulseaudio","pulseaudio#microphone","tray","battery","custom/wlogout"],
+    "modules-right": ["custom/media","backlight","pulseaudio","pulseaudio#microphone","tray","battery","custom/wlogout"],
     "hyprland/window": {
         "format": "{}"
     },
@@ -103,6 +102,16 @@
         "interval" : 30,
         "exec" : "python ~/.config/waybar/scripts/waybar-wttr.py",
         "return-type" : "json"
+    },
+
+    "custom/media": {
+        "exec": "python ~/.config/waybar/scripts/waybar-media.py",
+        "return-type": "json",
+        "on-click": "gdbus call --session --dest org.mpris.MediaPlayer2.spotify --object-path /org/mpris/MediaPlayer2 --method org.mpris.MediaPlayer2.Player.PlayPause",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "~/.config/waybar/scripts/waybar-media-volume.sh up",
+        "on-scroll-down": "~/.config/waybar/scripts/waybar-media-volume.sh down",
+        "tooltip": true
     },
 
     "custom/wlogout": {
