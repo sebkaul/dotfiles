@@ -16,7 +16,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 export ZSH="~/.config/zsh/ohmyzsh"
 
 # path to cargo programs
-export PATH="$PATH:/home/bastel/.cargo/bin"
+export PATH="$PATH:~/.cargo/bin"
 export BROWSER=brave-beta
 
 # mpvv script usage
@@ -205,7 +205,7 @@ alias gpt="chatgpt.sh -cc"
 alias qrc="qrencode -t UTF8"
 
 alias ff="clear && fetch"
-alias home="cd /home/bastel/"
+alias home="cd ~/"
 alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias brave="brave-beta --profile-directory='Default'"
 alias open="brave"
@@ -223,7 +223,7 @@ alias t="tmux"
 alias tls="tmux ls"
 alias ta="tmux attach"
 alias tma="tmux attach -t"
-alias ts="tmux source-file /home/bastel/.config/tmux/tmux.conf"
+alias ts="tmux source-file ~/.config/tmux/tmux.conf"
 
 # -- ALIASES FOR KEYBOARD  -- #
 alias klight0="echo 0 | sudo tee /sys/class/leds/samsung-galaxybook::kbd_backlight/brightness"
@@ -231,7 +231,7 @@ alias klight1="echo 1 | sudo tee /sys/class/leds/samsung-galaxybook::kbd_backlig
 alias klight2="echo 2 | sudo tee /sys/class/leds/samsung-galaxybook::kbd_backlight/brightness"
 alias klight3="echo 3 | sudo tee /sys/class/leds/samsung-galaxybook::kbd_backlight/brightness"
 
-alias layout="exec /home/bastel/.config/hypr/scripts/layoutchanger.sh"
+alias layout="exec ~/.config/hypr/scripts/layoutchanger.sh"
 
 alias pyvenv="source .venv/bin/activate"
 export PATH="$HOME/.local/bin:$PATH"
@@ -278,7 +278,7 @@ th() {
 # Automatically enter FZF on new shell
 
 # opencode
-export PATH=/home/bastel/.opencode/bin:$PATH
+export PATH=~/.opencode/bin:$PATH
 
 # Machine-specific settings (gitignored, lives in ~/.local.zsh)
 [[ -f ~/.local.zsh ]] && source ~/.local.zsh
