@@ -11,3 +11,4 @@ application/pdf=brave-browser-beta.desktop
 x-scheme-handler/figma=figma-linux.desktop
 x-scheme-handler/terminal=ghostty.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+x-scheme-handler/slack=slack.desktop
