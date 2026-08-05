@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=OKLCH
+Exec=/opt/brave.com/brave-beta/brave-browser-beta --profile-directory=Default --app-id=ipimeacobhpboejejhaagahelijljboh
+Icon=brave-ipimeacobhpboejejhaagahelijljboh-Default
+StartupWMClass=crx_ipimeacobhpboejejhaagahelijljboh
