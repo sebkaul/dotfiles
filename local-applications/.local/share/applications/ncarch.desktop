@@ -1,0 +1,8 @@
+# ~/.local/share/applications/youtube.desktop
+[Desktop Entry]
+Name=Nextcloud Arch
+Exec=brave-beta --new-window http://100.86.215.110:8080/apps/files/files
+Icon=/home/bastel/.local/share/icons/ico/nextcloud.ico
+Type=Application
+Categories=Network;
+

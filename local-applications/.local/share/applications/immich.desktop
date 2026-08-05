@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Immich
+Exec=/opt/brave.com/brave-beta/brave-browser-beta --profile-directory=Default --app-id=minpopeaoemkegmfnebfbphkkjlemicj
+Icon=brave-minpopeaoemkegmfnebfbphkkjlemicj-Default
+StartupWMClass=crx_minpopeaoemkegmfnebfbphkkjlemicj
