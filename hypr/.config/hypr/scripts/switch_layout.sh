@@ -1,21 +1,11 @@
+#!/usr/bin/env bash
+# Toggle between the layouts declared in hyprland.conf (kb_layout = us,no).
+# Uses switchxkblayout so nothing is written to disk and no reload happens --
+# a reload would re-apply the monitor= rules and make the screen flash.
 
-file="$HOME/.config/hypr/hyprland.conf"
+hyprctl switchxkblayout all next >/dev/null
 
-if [[ ! -f "$file" ]]; then
-    echo "File not found: $file"
-    exit 1
-fi
-
-
-if grep -q "kb_layout = us" "$file"; then
-    sed -i 's|kb_layout = us|kb_layout = no|' "$file"
-    notify-send "Set keyboard layout to Norwegian"
-    echo "Changed layout to no in $file"
-
-elif grep -q "kb_layout = no" "$file"; then
-    sed -i 's|kb_layout = no|kb_layout = us|' "$file"
-    notify-send "Set keyboard layout to American"
-    echo "Changed layout to us in $file"
-fi
-
-hyprctl reload
+case "$(hyprctl -j devices | jq -r '.keyboards[] | select(.main) | .active_keymap')" in
+    Norwegian*) notify-send -t 1000 -h string:x-canonical-private-synchronous:kblayout "Keyboard layout: Norwegian" ;;
+    *)          notify-send -t 1000 -h string:x-canonical-private-synchronous:kblayout "Keyboard layout: American" ;;
+esac
