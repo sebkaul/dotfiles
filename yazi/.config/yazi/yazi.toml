@@ -1,27 +1,24 @@
-[preview]
-image = true
-
 [opener]
 zathura = [
-    { run = 'zathura "$@"', orphan = true }
+    { run = 'zathura %s1', orphan = true }
 ]
 
 imv = [
-    { run = 'imv "$@"', orphan = true }
+    { run = 'imv %s', orphan = true }
 ]
 
-nvim =[
-    {run = 'nvim "$@"', block = true}
+nvim = [
+    { run = 'nvim %s', block = true }
 ]
 
 mpvv = [
-    { run = 'mpvv "$@"', block = true}
+    { run = 'mpvv %s', block = true }
 ]
 
 [open]
 rules = [
     { mime = "application/pdf", use = "zathura" },
     { mime = "image/*", use = "imv" },
-    { mime = "video/*", use = "mpvv"},
-    { mime = "*", use = "nvim"},
+    { mime = "video/*", use = "mpvv" },
+    { url = "*", use = "nvim" },
 ]
