@@ -12,6 +12,12 @@ window#waybar {
   color: #cdd6f4;
 }
 
+/* The "ws" bar floats inside the strip reserved by the "right" bar, so it has to
+   stay fully transparent - see config.jsonc for the layering. */
+window#waybar.ws {
+  background: transparent;
+}
+
 tooltip {
   background: #011423;
   border-radius: 0px;
@@ -52,11 +58,20 @@ tooltip * {
 }
 
 #workspaces {
-  background: #011423;
+  /* The box background dissolves over its last 180px, so the list fades out
+     towards the modules on the right instead of ending in a hard edge - and if it
+     ever reaches over them, they show through its tail instead of being covered. */
+  background-image: linear-gradient(to right,
+                                    #011423 0%,
+                                    #011423 calc(100% - 180px),
+                                    rgba(1, 20, 35, 0) 100%);
+  background-color: transparent;
   border-radius: 10px;
   font-weight: normal;
   font-style: normal;
   margin-left: 0px;
+  /* Half the padding of the other modules, to buy room for more workspaces. */
+  padding: 0px 10px;
 }
 
 #workspaces button {
@@ -64,8 +79,10 @@ tooltip * {
   /*background-color: #212124;*/
   border-radius: 8px;
   padding: 0px;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* Tighter than the original 10px: every pixel saved here is one more workspace
+     that fits before the list runs into the modules on the right. */
+  margin-left: 3px;
+  margin-right: 3px;
   padding-left: 3px;
   padding-right: 3px;
   min-width: 20px;
@@ -84,6 +101,38 @@ tooltip * {
   color: #11111b;
   background: #a6e3a1;
   border-radius: 10px;
+}
+
+/* The tail of the list fades out, so a long workspace list dissolves towards the
+   icons on the right instead of colliding with them head on. These are positions
+   in the list, not workspace numbers, and each rule covers "this one and every one
+   after it" - so the further right a button sits, the fainter it gets. Nothing is
+   ever hidden, and the rules below exempt the workspace you are on. Shift these
+   numbers if you want the fade to start earlier or later. */
+#workspaces button:nth-child(n+14) {
+  opacity: 0.5;
+}
+
+#workspaces button:nth-child(n+16) {
+  opacity: 0.3;
+}
+
+#workspaces button:nth-child(n+18) {
+  opacity: 0.18;
+}
+
+#workspaces button:nth-child(n+20) {
+  opacity: 0.1;
+}
+
+/* Always show where you are, however far down the list it sits and whether or not
+   it has any windows in it. Keep this after the fade rules - equal specificity, so
+   the last match wins. */
+#workspaces button.active,
+#workspaces button.visible,
+#workspaces button.urgent,
+#workspaces button:hover {
+  opacity: 1;
 }
 
 #workspaces button:hover {
