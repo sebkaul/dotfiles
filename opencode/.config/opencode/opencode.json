@@ -6,7 +6,7 @@
       "name": "IDUN LLM",
       "options": {
         "baseURL": "https://llm.hpc.ntnu.no/v1",
-        "apiKey": "***REMOVED***"
+        "apiKey": "{env:IDUN_API_KEY}"
       },
       "models": {
         "openai/gpt-oss-120b": {

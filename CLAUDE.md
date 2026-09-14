@@ -30,6 +30,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/). Each subdirectory i
 | `mimeapps` | `~/.config/mimeapps.list` |
 | `local-bin` | `~/.local/bin/{alacritty-tmux.sh,battery_notify.sh,mpvv}` |
 | `local-applications` | `~/.local/share/applications/{custom .desktop files}` |
+| `opencode` | `~/.config/opencode/` (API key via `IDUN_API_KEY` from `private/local.zsh`) |
 
 ## Fresh machine setup
 
