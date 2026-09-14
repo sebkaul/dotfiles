@@ -13,6 +13,7 @@ packages=(
     swaync rofi wlogout wofi nwg-dock
     fontconfig xkb gtk mimeapps
     local-bin local-applications
+    opencode
 )
 # Note: wallpapers are NOT stowed — run ./sync-wallpapers.sh user@server to populate ~/Wallpapers/
 
