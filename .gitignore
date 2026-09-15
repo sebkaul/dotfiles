@@ -26,7 +26,7 @@ node_modules/
 # wallpapers — synced from server via sync-wallpapers.sh, not in git
 wallpapers/
 
-# private folder — now its own git repo on Gitea
+# private folder — its own private git repo on GitHub (dotfiles-private)
 private/
 
 # machine-specific monitor config (each host owns this file locally)
