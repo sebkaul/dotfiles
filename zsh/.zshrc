@@ -3,6 +3,18 @@
 
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
+# Reboot notice (see ~/dotfiles/syscheck). Must print ABOVE the instant prompt:
+# p10k counts any output before its own first precmd (including other precmd
+# hooks) as init output and warns. The guard stops the second run of this file
+# (.zprofile sources it too) from printing again after instant prompt is active.
+if [[ -z $_REBOOT_NOTICE_SHOWN ]]; then
+  typeset -g _REBOOT_NOTICE_SHOWN=1
+  if [[ -e /var/run/reboot-required || ! -d /usr/lib/modules/$(uname -r) ]]; then
+    print -P "%F{yellow}%B⟳ Reboot pending%b%f — boot-time packages were upgraded. Run %F{cyan}bootcheck%f before rebooting."
+  fi
+fi
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -298,16 +310,8 @@ update() {
     up "$@"
 }
 
-# One-shot notice at the first prompt, not while .zshrc loads: printing during
-# startup breaks p10k's instant prompt. add-zsh-hook ignores duplicates, so the
-# double source from .zprofile still shows it only once.
-_reboot_notice() {
-    add-zsh-hook -d precmd _reboot_notice
-    [[ -e /var/run/reboot-required || ! -d /usr/lib/modules/$(uname -r) ]] || return 0
-    print -P "%F{yellow}%B⟳ Reboot pending%b%f — boot-time packages were upgraded. Run %F{cyan}bootcheck%f before rebooting."
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _reboot_notice
+# The "Reboot pending" login notice is at the top of this file, above the
+# instant prompt block.
 
 
 
