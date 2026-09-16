@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# bootcheck — is it safe to reboot right now?
+# Exit 0: safe to reboot (a reboot may still be pending). Exit 1: the next boot
+# is at risk - fix what it reports first. See syscheck/docs/checks.md.
+#
+# Run as root (sudo ~/.local/bin/bootcheck) to also inspect root-owned services
+# for deleted code; everything else works as a normal user.
+
+# No `set -e`: this is a diagnostic. Probes are expected to fail, and a failing
+# probe must turn into a ✗ line - not silently end the script halfway through.
+set -uo pipefail
+
+# Resolve the stow symlink so the lib is found both from ~/.local/bin and when
+# run straight from the repo.
+lib_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../lib/syscheck"
+# shellcheck source=SCRIPTDIR/../lib/syscheck/common.sh
+source "$lib_dir/common.sh"
+# shellcheck source=SCRIPTDIR/../lib/syscheck/boot.sh
+source "$lib_dir/boot.sh"
+
+sc_bootcheck_run

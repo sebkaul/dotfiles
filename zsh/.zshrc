@@ -191,7 +191,6 @@ alias wifix="rfkill unblock wlan"
 alias serialfix="sudo chmod +766 /dev/ttyACM0"
 alias cpufetch="cpufetch --style fancy --color 230,50,45:240,230,230:0,0,0:250,70,65:170,170,170"
 alias fetch="fastfetch"
-alias update="sudo pacman -Syyu && paru"
 alias desktopentry="/usr/share/applications/"
 alias nvide='nohup neovide & disown'
 #alias pyvenv="chmod +x .venv/bin/activate && source .venv/bin/activate"
@@ -264,6 +263,51 @@ pdf() {
 th() {
     thunar . & disown && exit
 }
+
+# -- UPGRADES & REBOOT SAFETY (see ~/dotfiles/syscheck) -- #
+
+# Full upgrade, then check the result is bootable. Returns non-zero if either
+# step failed, so `up && reboot` never reboots into a broken boot partition.
+up() {
+    local paru_rc boot_rc
+    paru -Syu "$@"
+    paru_rc=$?
+    # bootcheck runs even when paru failed: AUR builds happen after the repo
+    # upgrade, so a failed AUR build can still leave a freshly replaced kernel.
+    bootcheck
+    boot_rc=$?
+    # Tell waybar's custom/reboot (signal 9) to refresh now, not in 30s.
+    pkill -RTMIN+9 waybar 2>/dev/null
+
+    if (( boot_rc != 0 )); then
+        print -P "%F{red}%B✗ bootcheck FAILED (exit $boot_rc) — do NOT reboot until the ✗ lines above are fixed%b%f"
+        notify-send -u critical "bootcheck failed" "Do not reboot. Run bootcheck in a terminal."
+    elif [[ -e /var/run/reboot-required || ! -d /usr/lib/modules/$(uname -r) ]]; then
+        notify-send "Reboot pending" "Upgrade installed boot-time packages. bootcheck passed — safe to reboot."
+    fi
+    if (( paru_rc != 0 )); then
+        print -P "%F{red}%B✗ paru -Syu failed (exit $paru_rc)%b%f"
+        return $paru_rc
+    fi
+    return $boot_rc
+}
+
+# Kept as a function rather than an alias: you-should-use only nags about
+# aliases, so typing `up` won't be told to use `update` (or the reverse).
+update() {
+    up "$@"
+}
+
+# One-shot notice at the first prompt, not while .zshrc loads: printing during
+# startup breaks p10k's instant prompt. add-zsh-hook ignores duplicates, so the
+# double source from .zprofile still shows it only once.
+_reboot_notice() {
+    add-zsh-hook -d precmd _reboot_notice
+    [[ -e /var/run/reboot-required || ! -d /usr/lib/modules/$(uname -r) ]] || return 0
+    print -P "%F{yellow}%B⟳ Reboot pending%b%f — boot-time packages were upgraded. Run %F{cyan}bootcheck%f before rebooting."
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _reboot_notice
 
 
 

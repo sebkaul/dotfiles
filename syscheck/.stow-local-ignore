@@ -1,0 +1,11 @@
+# Only .local/ is linked into ~. Everything below stays in the repo:
+# docs and tests are for reading/running here, and system/ holds root-owned
+# files that install.sh --system copies into / (a symlink from /etc into a
+# user-writable repo would let anything running as you inject root code).
+# Listing any pattern here replaces stow's built-in ignore list, so README is
+# repeated from it.
+^/README\.md
+^/docs
+^/tests
+^/system
+^/\.stow-local-ignore

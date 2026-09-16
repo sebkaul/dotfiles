@@ -119,6 +119,19 @@
         "tooltip": true
     },
 
+    "custom/reboot": {
+        // Icon only while a reboot is pending (pacman hook flag, or the running
+        // kernel's modules were upgraded away); hidden otherwise. Clicking runs
+        // bootcheck in ghostty and keeps the window open to read the result.
+        // `up` sends SIGRTMIN+9 after upgrading so this refreshes immediately.
+        "exec": "~/.config/waybar/scripts/waybar-reboot.sh",
+        "return-type": "json",
+        "interval": 30,
+        "signal": 9,
+        "format": "{}",
+        "on-click": "ghostty --wait-after-command=true -e ~/.local/bin/bootcheck"
+    },
+
     "custom/wlogout": {
 	"format" : "{icon}",
 	"on-click" : "wlogout",

@@ -17,6 +17,8 @@ __pycache__/
 
 # stow internal
 .stow-local-ignore
+# ...except where a package needs one to keep docs/tests/system files out of ~
+!syscheck/.stow-local-ignore
 
 # large stuff that shouldn't be in git
 *.zip

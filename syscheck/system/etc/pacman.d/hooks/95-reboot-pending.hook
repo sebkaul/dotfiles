@@ -1,0 +1,30 @@
+# 95-reboot-pending.hook — flag that a reboot is needed after upgrading
+# packages whose new version only takes effect at boot.
+#
+# Source: ~/dotfiles/syscheck/system/etc/pacman.d/hooks/95-reboot-pending.hook
+# Deploy: ~/dotfiles/install.sh --system   (root-owned copy, never a symlink)
+#
+# 95 so it runs after 90-mkinitcpio-install has written the new initramfs.
+# The flag lives on /run (tmpfs), so it clears itself on the next boot.
+# Read by: bootcheck, the zsh login notice, and waybar's custom/reboot.
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-lts
+Target = linux-zen
+Target = linux-hardened
+# Firmware is split into linux-firmware-<vendor> packages; match all of them.
+Target = linux-firmware*
+Target = systemd
+# Microcode is loaded by the bootloader/initramfs, so it only applies at boot.
+Target = intel-ucode
+Target = amd-ucode
+Target = nvidia*
+
+[Action]
+Description = Flagging that a reboot is pending...
+When = PostTransaction
+Exec = /usr/bin/touch /var/run/reboot-required
