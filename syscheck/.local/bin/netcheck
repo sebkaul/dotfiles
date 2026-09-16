@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# netcheck — one-shot "where does connectivity break" diagnostic.
+# Checks run from the bottom layer up; the first ✗ is the layer to look at.
+# Exit 0: connected. Exit 1: at least one layer failed. See syscheck/docs/checks.md.
+
+# No `set -e`: probes are expected to fail on a broken network, and each failure
+# must turn into a ✗ line instead of ending the script.
+set -uo pipefail
+
+# Resolve the stow symlink so the lib is found both from ~/.local/bin and when
+# run straight from the repo.
+lib_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/../lib/syscheck"
+# shellcheck source=SCRIPTDIR/../lib/syscheck/common.sh
+source "$lib_dir/common.sh"
+# shellcheck source=SCRIPTDIR/../lib/syscheck/net.sh
+source "$lib_dir/net.sh"
+
+sc_netcheck_run

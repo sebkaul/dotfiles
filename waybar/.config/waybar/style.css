@@ -45,6 +45,7 @@ tooltip * {
 #temperature,
 #workspaces,
 #tray,
+#custom-reboot,
 #custom-wlogout,
 #backlight {
   background: #011423;
@@ -223,6 +224,14 @@ tooltip * {
 #custom-weather {
   border-radius: 10px 10px 10px 10px;
   border-right: 0px;
+  margin-right: 7px;
+}
+
+/* Only visible while a reboot is pending, so it can afford to stand out. */
+#custom-reboot {
+  color: #f9e2af;
+  border-color: #f9e2af;
+  border-radius: 10px;
   margin-right: 7px;
 }
 

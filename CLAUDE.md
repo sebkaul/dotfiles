@@ -31,6 +31,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/). Each subdirectory i
 | `local-bin` | `~/.local/bin/{alacritty-tmux.sh,battery_notify.sh,mpvv}` |
 | `local-applications` | `~/.local/share/applications/{custom .desktop files}` |
 | `opencode` | `~/.config/opencode/` (API key via `IDUN_API_KEY` from `private/local.zsh`) |
+| `syscheck` | `~/.local/bin/{bootcheck,netcheck}`, `~/.local/lib/syscheck/`. `README.md`, `docs/`, `tests/`, `system/` stay in the repo (`.stow-local-ignore`) |
 
 ## Fresh machine setup
 
@@ -121,6 +122,17 @@ cd ~/dotfiles && stow myapp
 
 # 4. Commit
 git add myapp install.sh && git commit -m "feat: add myapp config"
+```
+
+## Root-owned system files
+
+Files that belong outside `$HOME` live in `<package>/system/<path under />`, e.g.
+`syscheck/system/etc/pacman.d/hooks/95-reboot-pending.hook`. They are **copied as root, never
+stowed or symlinked** (pacman runs hooks as root; a symlink into this repo would let any user
+process change what root executes). Deploy or re-deploy after editing:
+
+```bash
+./install.sh --system    # needs sudo; list of files is system_files=() in install.sh
 ```
 
 ## Removing a package (unstow)

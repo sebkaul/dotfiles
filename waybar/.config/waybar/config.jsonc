@@ -23,7 +23,8 @@
 //     with "margin-bottom": -55, which must match "height".
 //   * WIDTH RESERVED FOR THE RIGHT MODULES = the margin-right value below (900).
 //     That is the worst case width of the right hand group (~660px idle, ~780px
-//     with a track playing) plus slack. It keeps the "ws" surface off the right
+//     with a track playing, ~60px more while custom/reboot is showing) plus
+//     slack. It keeps the "ws" surface off the right
 //     hand modules so they always get their own clicks; it does not squeeze the
 //     workspace list, because waybar cannot clip a bar to its own surface - the
 //     "ws" surface simply grows to whatever its contents need.
@@ -43,7 +44,7 @@
         "no-center": true,
         "include": ["~/.config/waybar/modules.jsonc"],
         "modules-left": [],
-        "modules-right": ["custom/media","backlight","pulseaudio","pulseaudio#microphone","tray","battery","custom/wlogout"]
+        "modules-right": ["custom/media","backlight","pulseaudio","pulseaudio#microphone","tray","custom/reboot","battery","custom/wlogout"]
     },
 
     {
