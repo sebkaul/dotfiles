@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # Only run selector if not already inside tmux
 if [ -z "$TMUX" ]; then
-    # Define sessions to ensure they exist
+    # Define sessions and their start folders (new windows open here)
     sessions=(home devops school)
+    declare -A session_dirs=(
+        [home]="$HOME"
+        [devops]="$HOME/Orbit"
+        [school]="$HOME/Semester"
+    )
     
     # Create sessions if they don't exist
     for s in "${sessions[@]}"; do
-        tmux has-session -t "$s" 2>/dev/null || tmux new-session -d -s "$s"
+        tmux has-session -t "$s" 2>/dev/null || tmux new-session -d -s "$s" -c "${session_dirs[$s]}"
     done
     
     # Pre-fetch session info
@@ -43,8 +48,9 @@ if [ -z "$TMUX" ]; then
         exec zsh
     fi
     
-    # Attach to selected session
-    exec tmux attach-session -t "$choice"
+    # Attach to selected session; -c (re)sets its start folder, which also
+    # fixes sessions that already existed or were restored by tmux-resurrect
+    exec tmux attach-session -t "$choice" -c "${session_dirs[$choice]}"
 fi
 
 # Fallback if already in tmux
