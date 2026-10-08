@@ -310,6 +310,20 @@ update() {
     up "$@"
 }
 
+# -- TAILSCALE -- #
+
+# Switch tailnets: `tailnet orbit`, `tailnet personal`. No argument lists the
+# profiles (* marks the active one). The name is matched against the profile's
+# nickname, tailnet name or account email, so give each profile a short name
+# once with: tailscale switch <profile> && tailscale set --nickname=<name>
+tailnet() {
+    if [[ -z $1 ]]; then
+        tailscale switch --list
+        return
+    fi
+    tailscale switch "$1" && tailscale switch --list
+}
+
 # The "Reboot pending" login notice is at the top of this file, above the
 # instant prompt block.
 

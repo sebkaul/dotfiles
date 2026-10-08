@@ -6,6 +6,6 @@
 	helper = !/usr/bin/gh auth git-credential
 [user]
 	name = sebkaul
-	email = sebkaul@users.noreply.github.com
+	email = 197891485+sebkaul@users.noreply.github.com
 [init]
 	defaultBranch = main
