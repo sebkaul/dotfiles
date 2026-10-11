@@ -11,6 +11,10 @@ nvim = [
     { run = 'nvim %s', block = true }
 ]
 
+calibre = [
+    { run = 'ebook-viewer %s1', orphan = true }
+]
+
 mpvv = [
     { run = 'mpvv %s', block = true }
 ]
@@ -18,6 +22,7 @@ mpvv = [
 [open]
 rules = [
     { mime = "application/pdf", use = "zathura" },
+    { url = "*.azw3", use = "calibre" },
     { mime = "image/*", use = "imv" },
     { mime = "video/*", use = "mpvv" },
     { url = "*", use = "nvim" },
