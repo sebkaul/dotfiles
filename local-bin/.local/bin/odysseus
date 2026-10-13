@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Start the Odysseus docker stack if needed, then open it as a Brave app window.
+DIR="$HOME/Projects/odysseus"
+URL="http://localhost:7011"
+
+if ! curl -fs -o /dev/null "$URL"; then
+    notify-send -a Odysseus "Odysseus" "Starting containers…" 2>/dev/null
+    docker compose --project-directory "$DIR" up -d || {
+        notify-send -u critical -a Odysseus "Odysseus" "docker compose up failed" 2>/dev/null
+        exit 1
+    }
+    for _ in $(seq 120); do
+        curl -fs -o /dev/null "$URL" && break
+        sleep 1
+    done
+fi
+
+exec brave-beta --app="$URL" --class=odysseus

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Odysseus
+Comment=Local AI workspace
+Exec=/home/bastel/.local/bin/odysseus
+Icon=/home/bastel/.local/share/icons/odysseus.png
+Terminal=false
+Categories=Network;
+StartupWMClass=odysseus
