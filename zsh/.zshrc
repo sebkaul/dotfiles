@@ -344,3 +344,19 @@ export PATH=~/.opencode/bin:$PATH
 
 # Machine-specific settings (gitignored, lives in ~/.local.zsh)
 [[ -f ~/.local.zsh ]] && source ~/.local.zsh
+
+# Credentials (gitignored, lives in ~/dotfiles/.env)
+[[ -f ~/dotfiles/.env ]] && { set -a; source ~/dotfiles/.env; set +a; }
+
+# oscloud <name> — export OS_* vars for an OpenStack cloud from ~/dotfiles/.env
+# e.g. `oscloud norstec-exposed && openstack server list`
+oscloud() {
+  local p=${${1:u}//-/_}
+  local id=${(P)${:-${p}_APP_CRED_ID}} secret=${(P)${:-${p}_APP_CRED_SECRET}}
+  [[ -z $id || -z $secret ]] && { echo "oscloud: no credentials for '$1' in ~/dotfiles/.env" >&2; return 1; }
+  unset OS_CLOUD
+  export OS_AUTH_TYPE=v3applicationcredential OS_AUTH_URL=$OS_NTNU_AUTH_URL \
+         OS_APPLICATION_CREDENTIAL_ID=$id OS_APPLICATION_CREDENTIAL_SECRET=$secret \
+         OS_REGION_NAME=${(P)${:-${p}_REGION}} OS_INTERFACE=public OS_IDENTITY_API_VERSION=3
+  echo "OpenStack cloud: $1 ($OS_REGION_NAME)"
+}
