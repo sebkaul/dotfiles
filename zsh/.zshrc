@@ -39,10 +39,6 @@ alias pp='mpvv toggle'
 # npm usage
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-export OS_CLOUD=norstec-exposed
-export OS_CLOUD=norstec-internal
-export OS_CLOUD=norstec-backup
-
 
 export GH_CONFIG_DIR="$HOME/.config/gh"
 # Set name of the theme to load --- if set to "random", it will
