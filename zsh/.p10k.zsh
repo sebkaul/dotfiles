@@ -79,6 +79,7 @@
     aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
     azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
+    oscloud                 # active openstack cloud from `oscloud` (see prompt_oscloud below)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
     context                 # user@hostname
@@ -1791,6 +1792,11 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+
+  # Active OpenStack cloud, set by the `oscloud` function in ~/.zshrc.
+  function prompt_oscloud() {
+    [[ -n $OSCLOUD_NAME ]] && p10k segment -b 1 -f 7 -i '☁' -t "$OSCLOUD_NAME ($OS_REGION_NAME)"
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.

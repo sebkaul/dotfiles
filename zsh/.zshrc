@@ -349,8 +349,30 @@ export PATH=~/.opencode/bin:$PATH
 [[ -f ~/dotfiles/.env ]] && { set -a; source ~/dotfiles/.env; set +a; }
 
 # oscloud <name> — export OS_* vars for an OpenStack cloud from ~/dotfiles/.env
-# e.g. `oscloud norstec-exposed && openstack server list`
+# e.g. `oscloud norstec-exposed && openstack server list`. No argument lists the
+# clouds (* marks the active one), `oscloud -u` clears them. A cloud is any
+# <NAME>_APP_CRED_ID / _APP_CRED_SECRET / _REGION triple in .env.
+_oscloud_names() {
+  local -a names=(${(f)"$(sed -nE 's/^([A-Z0-9_]+)_APP_CRED_ID=.*/\1/p' ~/dotfiles/.env 2>/dev/null)"})
+  print -l -- ${${names:l}//_/-}
+}
 oscloud() {
+  if [[ -z $1 ]]; then
+    local n mark note
+    for n in $(_oscloud_names); do
+      mark=' ' note=''
+      [[ $n == $OSCLOUD_NAME ]] && mark='*'
+      [[ -z ${(P)${:-${${n:u}//-/_}_APP_CRED_ID}} ]] && note='  (no credentials)'
+      echo "$mark $n$note"
+    done
+    return
+  fi
+  if [[ $1 == -u ]]; then
+    unset OSCLOUD_NAME OS_CLOUD OS_AUTH_TYPE OS_AUTH_URL OS_APPLICATION_CREDENTIAL_ID \
+          OS_APPLICATION_CREDENTIAL_SECRET OS_REGION_NAME OS_INTERFACE OS_IDENTITY_API_VERSION
+    echo "OpenStack cloud: none"
+    return
+  fi
   local p=${${1:u}//-/_}
   local id=${(P)${:-${p}_APP_CRED_ID}} secret=${(P)${:-${p}_APP_CRED_SECRET}}
   [[ -z $id || -z $secret ]] && { echo "oscloud: no credentials for '$1' in ~/dotfiles/.env" >&2; return 1; }
@@ -358,8 +380,11 @@ oscloud() {
   export OS_AUTH_TYPE=v3applicationcredential OS_AUTH_URL=$OS_NTNU_AUTH_URL \
          OS_APPLICATION_CREDENTIAL_ID=$id OS_APPLICATION_CREDENTIAL_SECRET=$secret \
          OS_REGION_NAME=${(P)${:-${p}_REGION}} OS_INTERFACE=public OS_IDENTITY_API_VERSION=3
+  export OSCLOUD_NAME=$1
   echo "OpenStack cloud: $1 ($OS_REGION_NAME)"
 }
+_oscloud() { compadd -- -u $(_oscloud_names) }
+compdef _oscloud oscloud
 
 # ssh-agent (systemd user socket) so key passphrases are asked once per session
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
