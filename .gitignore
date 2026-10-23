@@ -48,3 +48,6 @@ fontconfig/.config/fontconfig/*.cache*
 opencode/.config/opencode/package.json
 opencode/.config/opencode/package-lock.json
 opencode/.config/opencode/bun.lock
+
+# credentials — sourced by .zshrc, never committed
+.env
