@@ -360,3 +360,6 @@ oscloud() {
          OS_REGION_NAME=${(P)${:-${p}_REGION}} OS_INTERFACE=public OS_IDENTITY_API_VERSION=3
   echo "OpenStack cloud: $1 ($OS_REGION_NAME)"
 }
+
+# ssh-agent (systemd user socket) so key passphrases are asked once per session
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
