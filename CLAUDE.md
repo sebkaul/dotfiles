@@ -124,6 +124,19 @@ cd ~/dotfiles && stow myapp
 git add myapp install.sh && git commit -m "feat: add myapp config"
 ```
 
+## Servers (zsh)
+
+`server/` is **not** a Stow package: it holds a short, self-contained `.zshrc` for remote hosts
+(no plugin/theme dependencies; eza, zoxide, fzf and zsh plugins are used only if installed).
+
+```bash
+server/deploy.sh user@host [more hosts...]   # also accepts ~/.ssh/config aliases
+```
+
+Installs zsh (+ git, fzf, autosuggestions, syntax-highlighting) via apt/dnf/pacman/apk, backs up
+an existing `~/.zshrc` to `~/.zshrc.bak`, uploads the config and sets zsh as the login shell.
+Re-run it to push updates. Per-host additions go in `~/.zshrc.local` on the server.
+
 ## Root-owned system files
 
 Files that belong outside `$HOME` live in `<package>/system/<path under />`, e.g.
