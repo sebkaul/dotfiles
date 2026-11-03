@@ -24,6 +24,14 @@ elif command -v apk >/dev/null; then
 else
   command -v zsh >/dev/null || { echo "no known package manager and no zsh installed" >&2; exit 1; }
 fi
+# eza for ls (not in every distro release, e.g. Debian 12 / Ubuntu 22.04): best effort
+if ! command -v eza >/dev/null; then
+  { command -v apt-get >/dev/null && $SUDO apt-get install -y -qq eza >/dev/null 2>&1; } ||
+  { command -v dnf >/dev/null && $SUDO dnf install -y -q eza >/dev/null 2>&1; } ||
+  { command -v pacman >/dev/null && $SUDO pacman -S --needed --noconfirm eza >/dev/null 2>&1; } ||
+  { command -v apk >/dev/null && $SUDO apk add -q eza >/dev/null 2>&1; } ||
+  echo "note: eza not available here, ls falls back to plain ls"
+fi
 [ -f ~/.zshrc ] && [ "$(cksum < ~/.zshrc)" != "$(cksum < ~/.zshrc.new)" ] && cp ~/.zshrc ~/.zshrc.bak
 mv ~/.zshrc.new ~/.zshrc
 if [ -f ~/.p10k.zsh.new ]; then

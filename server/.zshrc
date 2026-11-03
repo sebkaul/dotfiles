@@ -43,12 +43,15 @@ export EDITOR=$(command -v nvim || command -v vim || echo vi) PAGER=less LESS=-R
 path=(~/.local/bin $path)
 
 # -- Aliases -- #
+# same as the laptop (zsh/.zshrc); icons need a Nerd Font in the *local* terminal
 if (( $+commands[eza] )); then
-  alias ls='eza --group-directories-first' ll='eza -l --header --git' la='eza -la --header --git' lt='eza --tree --level=2'
+  alias ls='eza --icons --long --header --color=always' la='eza --long --header --icons --git --all --color=always'
+  alias lss='eza --tree --icons --level=2 --color=always'
 else
-  alias ls='ls --color=auto -F' ll='ls -lhF --color=auto' la='ls -lAhF --color=auto'
+  alias ls='ls -lhF --color=auto' la='ls -lAhF --color=auto'
+  (( $+commands[tree] )) && alias lss='tree -C -L 2'
 fi
-alias c=clear ..='cd ..' ...='cd ../..' grep='grep --color=auto' please=sudo
+alias c=clear cl='clear && ls' ..='cd ..' ...='cd ../..' grep='grep --color=auto' please=sudo
 alias df='df -h' du='du -h' free='free -h' ports='ss -tulpn' myip='curl -s ifconfig.me; echo'
 alias zshconf='$EDITOR ~/.zshrc' reload='exec zsh'
 # tmux
