@@ -109,6 +109,12 @@ hl.config({
         no_update_news = true,
     },
 
+    render = {
+        -- 0.57 default (1) flips the monitor into HDR when a fullscreen app
+        -- advertises HDR (Brave/Signal/Electron): ~2s black, then dim/washed out.
+        cm_auto_hdr = 0,
+    },
+
     decoration = {
         rounding = 14,
     },
