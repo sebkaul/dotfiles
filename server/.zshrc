@@ -2,6 +2,11 @@
 # Optional tools (eza, zoxide, fzf, zsh plugins) are used only if installed.
 # Host-specific additions go in ~/.zshrc.local (never overwritten).
 
+# p10k instant prompt (only once deploy.sh has installed powerlevel10k). Keep near the top.
+if [[ -r ~/.powerlevel10k/powerlevel10k.zsh-theme && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # -- History -- #
 HISTFILE=~/.zsh_history HISTSIZE=12000 SAVEHIST=10000
 setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_SPACE HIST_IGNORE_ALL_DUPS \
@@ -21,23 +26,32 @@ bindkey '^[[A' up-line-or-beginning-search '^[OA' up-line-or-beginning-search '^
 bindkey '^[[B' down-line-or-beginning-search '^[OB' down-line-or-beginning-search '^J' down-line-or-beginning-search
 bindkey '^[[H' beginning-of-line '^[[F' end-of-line '^[[3~' delete-char
 
-# -- Prompt: user@host:cwd (branch) — host in yellow, red when root -- #
-autoload -Uz vcs_info && precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{magenta}(%b)%f'
-setopt PROMPT_SUBST
-PROMPT='%(!.%F{red}.%F{green})%n%f@%F{yellow}%m%f:%F{blue}%~%f${vcs_info_msg_0_} %(?..%F{red}[%?]%f )%(!.#.$) '
+# -- Prompt: powerlevel10k with the server config (server/.p10k.zsh) if deployed, -- #
+# -- else plain user@host:cwd (branch) — host in yellow, red when root            -- #
+if [[ -r ~/.powerlevel10k/powerlevel10k.zsh-theme && -r ~/.p10k.zsh ]]; then
+  source ~/.powerlevel10k/powerlevel10k.zsh-theme
+  source ~/.p10k.zsh
+else
+  autoload -Uz vcs_info && precmd() { vcs_info }
+  zstyle ':vcs_info:git:*' formats ' %F{magenta}(%b)%f'
+  setopt PROMPT_SUBST
+  PROMPT='%(!.%F{red}.%F{green})%n%f@%F{yellow}%m%f:%F{blue}%~%f${vcs_info_msg_0_} %(?..%F{red}[%?]%f )%(!.#.$) '
+fi
 
 # -- Environment -- #
 export EDITOR=$(command -v nvim || command -v vim || echo vi) PAGER=less LESS=-R
 path=(~/.local/bin $path)
 
 # -- Aliases -- #
+# same as the laptop (zsh/.zshrc); icons need a Nerd Font in the *local* terminal
 if (( $+commands[eza] )); then
-  alias ls='eza --group-directories-first' ll='eza -l --header --git' la='eza -la --header --git' lt='eza --tree --level=2'
+  alias ls='eza --icons --long --header --color=always' la='eza --long --header --icons --git --all --color=always'
+  alias lss='eza --tree --icons --level=2 --color=always'
 else
-  alias ls='ls --color=auto -F' ll='ls -lhF --color=auto' la='ls -lAhF --color=auto'
+  alias ls='ls -lhF --color=auto' la='ls -lAhF --color=auto'
+  (( $+commands[tree] )) && alias lss='tree -C -L 2'
 fi
-alias c=clear ..='cd ..' ...='cd ../..' grep='grep --color=auto' please=sudo
+alias c=clear cl='clear && ls' ..='cd ..' ...='cd ../..' grep='grep --color=auto' please=sudo
 alias df='df -h' du='du -h' free='free -h' ports='ss -tulpn' myip='curl -s ifconfig.me; echo'
 alias zshconf='$EDITOR ~/.zshrc' reload='exec zsh'
 # tmux
