@@ -133,9 +133,11 @@ git add myapp install.sh && git commit -m "feat: add myapp config"
 server/deploy.sh user@host [more hosts...]   # also accepts ~/.ssh/config aliases
 ```
 
-Installs zsh (+ git, fzf, autosuggestions, syntax-highlighting) via apt/dnf/pacman/apk, backs up
-an existing `~/.zshrc` to `~/.zshrc.bak`, uploads the config and sets zsh as the login shell.
-Re-run it to push updates. Per-host additions go in `~/.zshrc.local` on the server.
+Runs as the SSH user with no root, and only writes to that user's `$HOME`. The host needs zsh and
+git; packages (also eza, fzf) belong to host provisioning. Backs up a changed `~/.zshrc` to
+`~/.zshrc.bak`, uploads the config, installs powerlevel10k in `~/.powerlevel10k`, and if the login
+shell isn't zsh, starts zsh for interactive logins from the shell profile (line marked
+`# server-zsh-hook`). Re-run it to push updates. Per-host additions go in `~/.zshrc.local` on the server.
 
 ## Root-owned system files
 
