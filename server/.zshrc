@@ -1,5 +1,6 @@
 # Server zshrc — self-contained, no hard dependencies. Deployed by server/deploy.sh.
-# Optional tools (eza, zoxide, fzf, zsh plugins) are used only if installed.
+# Optional tools (eza, zoxide, fzf, zsh plugins) are used only if installed; deploy.sh puts
+# eza, zoxide and fzf in ~/.local/bin.
 # Host-specific additions go in ~/.zshrc.local (never overwritten).
 
 # p10k instant prompt (only once deploy.sh has installed powerlevel10k). Keep near the top.
