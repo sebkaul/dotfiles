@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Deploy the server zsh setup for the SSH user. Never uses root; only writes to that user's $HOME.
 #   server/deploy.sh user@host [more hosts...]   (anything ssh accepts, incl. ~/.ssh/config aliases)
-# The host needs zsh and git (+ curl for fzf/eza, installed user-local into ~/.local/bin).
+# The host needs zsh and git (+ curl for fzf/eza/zoxide, installed user-local into ~/.local/bin).
 # Backs up a changed ~/.zshrc to ~/.zshrc.bak. Safe to re-run to push config updates.
 # If server/.p10k.zsh exists (see p10k-configure.sh), also installs powerlevel10k into
 # ~/.powerlevel10k and uploads the config as ~/.p10k.zsh.
@@ -44,15 +44,15 @@ case ${SHELL:-} in
       printf '%s\n' "case \$- in *i*) if command -v zsh >/dev/null; then SHELL=\$(command -v zsh); export SHELL; exec zsh -l; fi ;; esac $marker" >> "$profile"
     ;;
 esac
-# fzf + eza as user-local binaries in ~/.local/bin (installed once; rm them to force an update)
+# fzf, eza, zoxide as user-local binaries in ~/.local/bin (installed once; rm them to force an update)
 bin=~/.local/bin; mkdir -p "$bin"
 case $(uname -m) in
-  x86_64)        fz=amd64 ez=x86_64 ;;
-  aarch64|arm64) fz=arm64 ez=aarch64 ;;
+  x86_64)        fz=amd64 arch=x86_64 ;;
+  aarch64|arm64) fz=arm64 arch=aarch64 ;;
   *)             fz= ;;
 esac
 if ! command -v curl >/dev/null || [ -z "$fz" ]; then
-  echo "warn: no curl or unsupported arch $(uname -m), skipping fzf/eza" >&2
+  echo "warn: no curl or unsupported arch $(uname -m), skipping fzf/eza/zoxide" >&2
 else
   if [ ! -x "$bin/fzf" ]; then
     v=$(curl -fsSLo /dev/null -w '%{url_effective}' https://github.com/junegunn/fzf/releases/latest) && v=${v##*/v} &&
@@ -60,8 +60,13 @@ else
       echo "warn: fzf install failed" >&2
   fi
   if [ ! -x "$bin/eza" ]; then
-    curl -fsSL "https://github.com/eza-community/eza/releases/latest/download/eza_$ez-unknown-linux-gnu.tar.gz" | tar xz -C "$bin" ||
+    curl -fsSL "https://github.com/eza-community/eza/releases/latest/download/eza_$arch-unknown-linux-gnu.tar.gz" | tar xz -C "$bin" ||
       echo "warn: eza install failed" >&2
+  fi
+  if [ ! -x "$bin/zoxide" ]; then
+    v=$(curl -fsSLo /dev/null -w '%{url_effective}' https://github.com/ajeetdsouza/zoxide/releases/latest) && v=${v##*/v} &&
+      curl -fsSL "https://github.com/ajeetdsouza/zoxide/releases/download/v$v/zoxide-$v-$arch-unknown-linux-musl.tar.gz" | tar xz -C "$bin" zoxide ||
+      echo "warn: zoxide install failed" >&2
   fi
 fi
 echo "zsh ready on $(uname -n) for $(id -un) ($how)"
