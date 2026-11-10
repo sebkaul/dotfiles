@@ -7,6 +7,9 @@ if [[ -r ~/.powerlevel10k/powerlevel10k.zsh-theme && -r "${XDG_CACHE_HOME:-$HOME
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+typeset -U path
+path=(~/.local/bin $path)
+
 # -- History -- #
 HISTFILE=~/.zsh_history HISTSIZE=12000 SAVEHIST=10000
 setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_SPACE HIST_IGNORE_ALL_DUPS \
@@ -40,7 +43,6 @@ fi
 
 # -- Environment -- #
 export EDITOR=$(command -v nvim || command -v vim || echo vi) PAGER=less LESS=-R
-path=(~/.local/bin $path)
 
 # -- Aliases -- #
 # same as the laptop (zsh/.zshrc); icons need a Nerd Font in the *local* terminal
@@ -74,8 +76,16 @@ extract() {
 
 # -- Optional tools and plugins (Debian/Ubuntu, Fedora and Arch paths) -- #
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
-for f in /usr/share/{fzf/key-bindings.zsh,doc/fzf/examples/key-bindings.zsh,fzf/shell/key-bindings.zsh} \
-         /usr/share/{zsh/plugins/,}zsh-autosuggestions/zsh-autosuggestions.zsh \
+# fzf: built-in integration (fzf >= 0.48, e.g. the ~/.local/bin one from deploy.sh), else distro key-bindings
+if (( $+commands[fzf] )) && fzf --zsh &>/dev/null; then
+  source <(fzf --zsh)
+else
+  for f in /usr/share/{fzf/key-bindings.zsh,doc/fzf/examples/key-bindings.zsh,fzf/shell/key-bindings.zsh}; do
+    [[ -r $f ]] && { source $f; break; }
+  done
+fi
+# zsh-syntax-highlighting must be sourced last
+for f in /usr/share/{zsh/plugins/,}zsh-autosuggestions/zsh-autosuggestions.zsh \
          /usr/share/{zsh/plugins/,}zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
   [[ -r $f ]] && source $f
 done; unset f
