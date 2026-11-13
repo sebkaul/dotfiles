@@ -174,7 +174,7 @@ plugins=(git)
 #
 # Example aliases
 alias zshconf="nvim ~/.zshrc"
-alias nv="NVIM_APNAME=nvim-new nvim"
+alias nv="NVIM_APPNAME=nvim-new nvim"
 # alias ohmyzsh="nvim ~/.config/.oh-my-zsh"
 
 bindkey '^A' beginning-of-line   # Ctrl-A: Move to beginning
