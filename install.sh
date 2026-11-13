@@ -28,7 +28,7 @@ fi
 
 packages=(
     hypr waybar ghostty tmux
-    zsh nvim yazi zathura
+    zsh nvim nvim-new yazi zathura
     git lazygit btop mpv fastfetch
     swaync rofi wlogout wofi nwg-dock
     fontconfig xkb gtk mimeapps
