@@ -61,8 +61,8 @@ message.
 |---|---|---|---|
 | 0 | [#14](https://github.com/sebkaul/dotfiles/issues/14) | Setup + Lua primer | ✅ |
 | 1 | [#15](https://github.com/sebkaul/dotfiles/issues/15) | Options | ✅ |
-| 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | 🚧 |
-| 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | |
+| 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | ✅ |
+| 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | 🚧 |
 | 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | |
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | |
@@ -95,6 +95,8 @@ can be stored in variables and passed as arguments, and `function() ... end`
 without a name is an anonymous function, used as a callback. Autocommands
 run a callback on an event (`:help events`); putting them in an augroup with
 `clear = true` keeps them from piling up when the file is re-sourced.
+The system clipboard is not the default register (no `unnamedplus`): copy
+with `"+y`, paste with `"+p` (see `docs/clipboard-and-registers.md`).
 
 ## Checking things
 

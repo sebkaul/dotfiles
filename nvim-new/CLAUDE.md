@@ -37,15 +37,16 @@ work and where we left off.
 
 Update this section at the end of every session.
 
-- **Done:** step 0 (#14, setup + Lua primer) and step 1 (#15, options).
-- **In progress: step 2 (#16, keymaps + autocmds).** `keymaps.lua` and
-  `autocmds.lua` are written and `require`d from `init.lua`, and they load
-  cleanly. Clipboard decided (option 2): `unnamedplus` removed from
-  options.lua; the user copies with `"+y` by habit. Still **uncommitted**.
-  Next: walk the user through reading `keymaps.lua`, let them try the binds
-  and (optionally) write `<leader>y`/`<leader>p` clipboard maps themselves,
-  then commit `(#16)` and mark step 2 ✅ in the README.
-- **Next step:** 3 (#17), plugins via `vim.pack` plus a colorscheme.
+- **Done:** steps 0–2 (#14 setup, #15 options, #16 keymaps + autocmds).
+  Clipboard: option 2 (no `unnamedplus`, explicit `"+y`/`"+p`).
+- **In progress: step 3 (#17), plugins via `vim.pack` + colorscheme.** The
+  user writes it themselves from instructions given 2026-11-16: new file
+  `lua/config/plugins.lua` (tokyonight via `vim.pack.add`, `setup`,
+  `vim.cmd.colorscheme`), required from `init.lua`; commit
+  `nvim-pack-lock.json` along with it. Review what they wrote, then commit
+  `(#17)` and mark the step ✅.
+- **The user prefers small, spelled-out tasks:** say exactly which file and
+  which lines, and explain every line. No puzzles.
 
 ## Open questions / flagged by the user
 

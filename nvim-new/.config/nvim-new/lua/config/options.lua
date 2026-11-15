@@ -34,9 +34,8 @@ o.winborder = "rounded" -- default border for floating windows (0.11+)
 -- Scrolling (personal preference carried over from the old config) ----------
 o.scrolloff = 0 -- cursor may touch the top/bottom edge before scrolling
 o.mousescroll = "ver:1,hor:1" -- mouse wheel scrolls one line at a time
--- The old config also had `scroll = 1` (makes <C-d>/<C-u> move one line).
--- 'scroll' is window-local and is reset whenever a window is resized, so it
--- only works reliably as a keymap or autocommand. Revisit in step #16.
+-- The old `scroll = 1` is now a keymap (keymaps.lua): Neovim resets the
+-- 'scroll' option whenever a window is resized.
 
 -- Search ---------------------------------------------------------------------
 o.ignorecase = true -- /foo matches Foo...
@@ -57,12 +56,10 @@ o.updatetime = 250 -- ms of idle before CursorHold fires / swap is written (defa
 o.timeoutlen = 400 -- ms to wait for the rest of a key sequence (default 1000)
 
 -- Clipboard ------------------------------------------------------------------
--- Yank/paste go through the system clipboard (wl-copy/wl-paste on Wayland).
--- Wrapped in vim.schedule() because detecting the clipboard tool takes a few
--- ms; scheduling it runs it after startup instead of blocking it.
-vim.schedule(function()
-	opt.clipboard:append("unnamedplus") -- method call: note the colon
-end)
+-- Deliberately NOT set: `clipboard = "unnamedplus"`. Yank/delete stay in
+-- Neovim's own registers; the system clipboard (register +, via
+-- wl-copy/wl-paste) changes only when asked: "+y to copy, "+p to paste.
+-- See nvim-new/docs/clipboard-and-registers.md.
 
 -- Dropped from the old config, because they are already the default in
 -- Neovim 0.10+ (check any of them with `:set <name>?` or `:verbose set <name>?`):
