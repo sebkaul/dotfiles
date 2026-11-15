@@ -1,2 +1,1 @@
-local hello = require("config.hello")
-hello.say("hi")
+require("config.options")
