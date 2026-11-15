@@ -1,0 +1,7 @@
+# Only .config/nvim-new/ is linked into ~. Docs for humans and Claude stay here.
+# Listing any pattern replaces stow's built-in ignore list, so README is
+# repeated from it.
+^/README\.md
+^/CLAUDE\.md
+^/docs
+^/\.stow-local-ignore

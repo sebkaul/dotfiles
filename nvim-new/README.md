@@ -19,8 +19,8 @@ nv            # alias for: NVIM_APPNAME=nvim-new nvim
 affected.
 
 This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
-`~/.config/nvim-new`. This README is not linked (Stow ignores `README.*` by
-default).
+`~/.config/nvim-new`. This README, `CLAUDE.md` and `docs/` are not linked
+(`.stow-local-ignore`).
 
 ## Goals
 
@@ -41,9 +41,11 @@ default).
 └── lua/config/
     ├── options.lua        editor options (vim.o / vim.opt)
     ├── keymaps.lua        leader key and general keymaps
-    ├── autocmds.lua       autocommands (highlight on yank, ...)
-    └── hello.lua          step 0 Lua primer, not loaded any more
+    └── autocmds.lua       autocommands (highlight on yank, ...)
 ```
+
+Next to it: `CLAUDE.md` (working notes and current status, for Claude
+sessions) and `docs/` (topic guides, e.g. `clipboard-and-registers.md`).
 
 `require("config.options")` finds `lua/config/options.lua`: Neovim searches
 the `lua/` folder of every directory on `runtimepath`, and dots in the name
