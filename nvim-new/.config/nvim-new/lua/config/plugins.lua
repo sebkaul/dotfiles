@@ -5,6 +5,7 @@ vim.pack.add({
 	"https://github.com/folke/tokyonight.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/stevearc/oil.nvim",
 })
 
 require("tokyonight").setup({
@@ -46,3 +47,17 @@ map("n", "<leader>fc", fzf.grep_cword, { desc = "Find word under cursor" })
 map("n", "<leader>fb", fzf.buffers, { desc = "Find open buffers" })
 map("n", "<leader>fh", fzf.helptags, { desc = "Find help" })
 map("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })
+
+
+-- File Explorer ----------------------------------------------------------------
+local oil = require("oil")
+oil.setup({
+    view_options = {
+        max_width = 0.6, -- at most 60& of the screen wide...
+        max_height = 0.7, -- ... and 700% high
+    },
+})
+
+map("n", "<leader>ee", oil.toggle_float, { desc = "Toggle file explorer" })
+map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+
