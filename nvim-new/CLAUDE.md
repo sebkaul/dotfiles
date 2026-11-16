@@ -54,7 +54,16 @@ Update this section at the end of every session.
   `vim.pack.del`; the user keeps the commented-out oil block, their call).
   Gotcha met: a non-breaking space (AltGr+Space, Norwegian layout) broke Lua.
   The user does NOT want `nbsp:none` in Hyprland; don't bring it up again.
-- **In progress: step 7 (#21), moving between files + tmux.**
+- **In progress: step 7 (#21), moving between files + tmux.** Split in two
+  commits, both `(#21)`:
+  - **7a:** the user does NOT want nvim/tmux crossing. `<C-h/j/k/l>` move
+    between nvim splits only (plain `<C-w>h` etc. keymaps in keymaps.lua);
+    tmux panes stay on prefix+o / prefix+number. vim-tmux-navigator was
+    tried and dropped (removed with `vim.pack.del`); tmux.conf unchanged.
+    Done and committed, together with Enter = `go_in_plus` in mini.files.
+  - **7b, next:** built-in movement (buffers, `<C-^>` alternate file,
+    jumplist `<C-o>`/`<C-i>`, marks), mostly explanation plus a few keymaps,
+    then decide on a harpoon-style quick list (harpoon2 vs. built-in marks).
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 

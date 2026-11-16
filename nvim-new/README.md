@@ -27,7 +27,8 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 - IDE-like workflow: working go-to-definition and references (LSP was never
   actually started in the old config), completion, diagnostics, formatting.
 - A floating file explorer and fast fuzzy file jumping.
-- Seamless movement between Neovim splits and tmux panes.
+- Fast movement between Neovim splits (`<C-h/j/k/l>`); tmux panes keep
+  their own keys (prefix + o, prefix + q + number).
 - Only built-in machinery where it is good enough: `vim.pack` (Neovim 0.12)
   as plugin manager, `vim.lsp.config` for LSP. No lazy.nvim, no mason, no
   nvim-lspconfig unless there is a reason.
@@ -131,6 +132,13 @@ wrong group is silently ignored. `if not files.close() then files.open(...) end`
 is a toggle. Removing a plugin: drop its URL, restart, `vim.pack.del({ "name" })`.
 Watch out for `␣` (non-breaking space, AltGr+Space on the Norwegian layout):
 Lua treats it as a name, not whitespace.
+
+**7a – Splits.** `<C-w>` is Vim's window-command key (`<C-w>h` = go to the
+left window), so `map("n", "<C-h>", "<C-w>h")` makes it a single key. Load
+order matters: `plugins.lua` runs after `keymaps.lua`, so a plugin that maps
+the same keys silently overrides yours (`:verbose map <C-h>` shows who won).
+In mini.files, `mappings = { go_in_plus = "<CR>" }` makes Enter open a file
+and close the explorer.
 
 ## Checking things
 

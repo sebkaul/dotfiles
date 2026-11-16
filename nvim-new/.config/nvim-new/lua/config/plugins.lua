@@ -9,6 +9,7 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.files",
 })
 
+-- Theme ------------------------------------------------------------
 require("tokyonight").setup({
 	style = "night",
 })
@@ -71,6 +72,9 @@ files.setup({
     },
     options = {
         permanent_delete = false, -- deleted files go to a trash folder instead
+    },
+    mappings = {
+        go_in_plus = "<CR>", -- Enter: open file and close the explorer (default: L)
     },
 })
 
