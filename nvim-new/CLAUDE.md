@@ -37,14 +37,11 @@ work and where we left off.
 
 Update this section at the end of every session.
 
-- **Done:** steps 0–2 (#14 setup, #15 options, #16 keymaps + autocmds).
-  Clipboard: option 2 (no `unnamedplus`, explicit `"+y`/`"+p`).
-- **In progress: step 3 (#17), plugins via `vim.pack` + colorscheme.** The
-  user writes it themselves from instructions given 2026-11-16: new file
-  `lua/config/plugins.lua` (tokyonight via `vim.pack.add`, `setup`,
-  `vim.cmd.colorscheme`), required from `init.lua`; commit
-  `nvim-pack-lock.json` along with it. Review what they wrote, then commit
-  `(#17)` and mark the step ✅.
+- **Done:** steps 0–3 (#14 setup, #15 options, #16 keymaps + autocmds,
+  #17 vim.pack + tokyonight). Clipboard: option 2 (no `unnamedplus`,
+  explicit `"+y`/`"+p`).
+- **In progress: step 4 (#18), treesitter.** Instructions given 2026-11-16;
+  the user writes it. Review, commit `(#18)`, mark ✅.
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 
@@ -56,6 +53,12 @@ Update this section at the end of every session.
   `unnamedplus`, explicit `"+`).
 - tmux has no clipboard/copy-mode config yet (`tmux/.config/tmux/tmux.conf`).
   It belongs with step 7 (#21, tmux), or earlier if the clipboard work needs it.
+
+- **Theme customization deferred.** The user likes tokyonight "night" for
+  now but wants to iterate on it later (colors, maybe transparency, maybe
+  another theme). Do it in step 12 (#26, UI polish) or whenever they ask.
+- The user's files are indented with spaces, Claude's with tabs. A formatter
+  (stylua, step 10) will make that consistent; no need to fix by hand.
 
 ## Environment facts
 

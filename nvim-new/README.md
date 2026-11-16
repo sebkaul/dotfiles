@@ -38,6 +38,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 ```
 .config/nvim-new/
 ├── init.lua               entry point; only require()s modules, in order
+├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
 └── lua/config/
     ├── options.lua        editor options (vim.o / vim.opt)
     ├── keymaps.lua        leader key and general keymaps
@@ -62,8 +63,8 @@ message.
 | 0 | [#14](https://github.com/sebkaul/dotfiles/issues/14) | Setup + Lua primer | ✅ |
 | 1 | [#15](https://github.com/sebkaul/dotfiles/issues/15) | Options | ✅ |
 | 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | ✅ |
-| 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | 🚧 |
-| 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | |
+| 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅ |
+| 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | 🚧 |
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | |
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | |
@@ -97,6 +98,14 @@ run a callback on an event (`:help events`); putting them in an augroup with
 `clear = true` keeps them from piling up when the file is re-sourced.
 The system clipboard is not the default register (no `unnamedplus`): copy
 with `"+y`, paste with `"+p` (see `docs/clipboard-and-registers.md`).
+
+**3 – Plugins.** A plugin is a Git repo of Lua code. `vim.pack.add({ urls })`
+clones missing ones into `~/.local/share/nvim-new/site/pack/core/opt/` and
+puts them on the runtimepath, which is why `require("tokyonight")` then works.
+Most plugins are configured with `require("name").setup({ options })`.
+`vim.cmd.colorscheme("x")` runs `:colorscheme x`. The lockfile pins each
+plugin to a commit; update with `:lua vim.pack.update()` (review, then
+`:write` to accept).
 
 ## Checking things
 
