@@ -42,7 +42,8 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 └── lua/config/
     ├── options.lua        editor options (vim.o / vim.opt)
     ├── keymaps.lua        leader key and general keymaps
-    └── autocmds.lua       autocommands (highlight on yank, ...)
+    ├── autocmds.lua       autocommands (highlight on yank, ...)
+    └── plugins.lua        plugins (vim.pack.add) and their setup
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude
