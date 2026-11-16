@@ -37,11 +37,18 @@ work and where we left off.
 
 Update this section at the end of every session.
 
-- **Done:** steps 0–3 (#14 setup, #15 options, #16 keymaps + autocmds,
-  #17 vim.pack + tokyonight). Clipboard: option 2 (no `unnamedplus`,
-  explicit `"+y`/`"+p`).
-- **In progress: step 4 (#18), treesitter.** Instructions given 2026-11-16;
-  the user writes it. Review, commit `(#18)`, mark ✅.
+- **Done:** steps 0–4 (#14 setup, #15 options, #16 keymaps + autocmds,
+  #17 vim.pack + tokyonight, #18 treesitter). Clipboard: option 2 (no
+  `unnamedplus`, explicit `"+y`/`"+p`).
+- Treesitter notes: nvim-treesitter `main` branch (the rewrite); not done yet
+  (maybe later): folds, indentexpr (experimental), a `PackChanged` autocmd
+  that runs `:TSUpdate` automatically. Until then, after `vim.pack.update()`,
+  run `:TSUpdate`. The user hit "one error" while setting it up (2026-11-16)
+  but didn't paste it, and Claude couldn't reproduce it (health all green). If
+  it comes back, ask for the `:messages` output.
+- **In progress: step 5 (#19), fuzzy finder.** fzf-lua (uses the `fzf`
+  binary the user already uses in the shell). Instructions given 2026-11-16;
+  the user writes it. Review, commit `(#19)`, mark ✅.
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 

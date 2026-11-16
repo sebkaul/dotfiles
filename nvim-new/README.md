@@ -65,8 +65,8 @@ message.
 | 1 | [#15](https://github.com/sebkaul/dotfiles/issues/15) | Options | ✅ |
 | 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | ✅ |
 | 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅ |
-| 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | 🚧 |
-| 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | |
+| 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | ✅ |
+| 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | 🚧 |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | |
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | |
 | 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | |
@@ -107,6 +107,14 @@ Most plugins are configured with `require("name").setup({ options })`.
 `vim.cmd.colorscheme("x")` runs `:colorscheme x`. The lockfile pins each
 plugin to a commit; update with `:lua vim.pack.update()` (review, then
 `:write` to accept).
+
+**4 – Treesitter.** A parser per language turns the file into a syntax tree,
+which gives exact highlighting (and later: text objects, folds). nvim-treesitter
+only downloads and compiles parsers (`install({...})`, `:TSUpdate`); Neovim
+itself does the highlighting via `vim.treesitter.start()`, which a `FileType`
+autocmd calls for every buffer. `pcall(f, arg)` calls `f(arg)` but catches
+errors instead of showing them (filetypes without a parser). Look around with
+`:Inspect`, `:InspectTree`, `:checkhealth nvim-treesitter`.
 
 ## Checking things
 
