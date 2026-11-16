@@ -67,8 +67,8 @@ message.
 | 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅ |
 | 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | ✅ |
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
-| 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | 🚧 |
-| 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | |
+| 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | ✅ |
+| 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | 🚧 |
 | 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | |
 | 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | |
 | 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | |
@@ -122,6 +122,15 @@ its functions as rhs *without* `()` so they run on keypress, not at startup.
 Plugin keymaps live next to the plugin: `keymaps.lua` runs before the plugins
 are loaded, so `require` of a plugin there would fail. (A `"<cmd>FzfLua
 files<CR>"` string would work, since it is only looked up on keypress.)
+
+**6 – File explorer.** mini.files: yazi-style columns, `h`/`l` to move out/in,
+and each column is a buffer you edit with normal Vim commands (`o` new file,
+rename by typing, `dd` delete, `yy`/`p` copy), then apply with `=`. Options go
+into nested tables (`windows = { ... }`, `options = { ... }`); a key in the
+wrong group is silently ignored. `if not files.close() then files.open(...) end`
+is a toggle. Removing a plugin: drop its URL, restart, `vim.pack.del({ "name" })`.
+Watch out for `␣` (non-breaking space, AltGr+Space on the Norwegian layout):
+Lua treats it as a name, not whitespace.
 
 ## Checking things
 
