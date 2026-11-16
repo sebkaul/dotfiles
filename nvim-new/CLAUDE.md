@@ -37,8 +37,8 @@ work and where we left off.
 
 Update this section at the end of every session.
 
-- **Done:** steps 0–4 (#14 setup, #15 options, #16 keymaps + autocmds,
-  #17 vim.pack + tokyonight, #18 treesitter). Clipboard: option 2 (no
+- **Done:** steps 0–5 (#14 setup, #15 options, #16 keymaps + autocmds,
+  #17 vim.pack + tokyonight, #18 treesitter, #19 fzf-lua). Clipboard: option 2 (no
   `unnamedplus`, explicit `"+y`/`"+p`).
 - Treesitter notes: nvim-treesitter `main` branch (the rewrite); not done yet
   (maybe later): folds, indentexpr (experimental), a `PackChanged` autocmd
@@ -46,9 +46,13 @@ Update this section at the end of every session.
   run `:TSUpdate`. The user hit "one error" while setting it up (2026-11-16)
   but didn't paste it, and Claude couldn't reproduce it (health all green). If
   it comes back, ask for the `:messages` output.
-- **In progress: step 5 (#19), fuzzy finder.** fzf-lua (uses the `fzf`
-  binary the user already uses in the shell). Instructions given 2026-11-16;
-  the user writes it. Review, commit `(#19)`, mark ✅.
+- Step 5 done (#19): fzf-lua, keymaps `<leader>f{f,r,s,c,b,h,k}` in
+  plugins.lua. The user decided plugin keymaps stay next to the plugin, not
+  in keymaps.lua. Plan: split plugins.lua into one file per plugin once it
+  gets long (around the LSP step).
+- **In progress: step 6 (#20), floating file explorer.** oil.nvim in a float
+  (edit the directory as a buffer). Instructions given 2026-11-16; the user
+  writes it. Review, commit `(#20)`, mark ✅.
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 

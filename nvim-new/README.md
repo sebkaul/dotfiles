@@ -66,8 +66,8 @@ message.
 | 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | ✅ |
 | 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅ |
 | 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | ✅ |
-| 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | 🚧 |
-| 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | |
+| 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
+| 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | 🚧 |
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | |
 | 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | |
 | 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | |
@@ -115,6 +115,13 @@ itself does the highlighting via `vim.treesitter.start()`, which a `FileType`
 autocmd calls for every buffer. `pcall(f, arg)` calls `f(arg)` but catches
 errors instead of showing them (filetypes without a parser). Look around with
 `:Inspect`, `:InspectTree`, `:checkhealth nvim-treesitter`.
+
+**5 – Fuzzy finder.** fzf-lua drives the `fzf` binary (plus `fd` and `rg`).
+`local fzf = require("fzf-lua")` keeps the module in a variable; mappings pass
+its functions as rhs *without* `()` so they run on keypress, not at startup.
+Plugin keymaps live next to the plugin: `keymaps.lua` runs before the plugins
+are loaded, so `require` of a plugin there would fail. (A `"<cmd>FzfLua
+files<CR>"` string would work, since it is only looked up on keypress.)
 
 ## Checking things
 
