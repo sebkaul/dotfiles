@@ -64,6 +64,10 @@ map("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open buffer in new tab" })
 
+-- Files
+map("n", "<leader><leader>", "<C-^>", { desc = "Toggle alternate file" })
+
+
 -- A Lua function as rhs ----------------------------------------------------------
 -- Anything a key string can't express goes in a function. This one is
 -- anonymous: `function() ... end` written inline, never given a name.

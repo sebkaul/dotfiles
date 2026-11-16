@@ -37,8 +37,9 @@ work and where we left off.
 
 Update this section at the end of every session.
 
-- **Done:** steps 0–6 (#14 setup, #15 options, #16 keymaps + autocmds,
-  #17 vim.pack + tokyonight, #18 treesitter, #19 fzf-lua, #20 mini.files). Clipboard: option 2 (no
+- **Done:** steps 0–7 (#14 setup, #15 options, #16 keymaps + autocmds,
+  #17 vim.pack + tokyonight, #18 treesitter, #19 fzf-lua, #20 mini.files,
+  #21 split + file movement). Clipboard: option 2 (no
   `unnamedplus`, explicit `"+y`/`"+p`).
 - Treesitter notes: nvim-treesitter `main` branch (the rewrite); not done yet
   (maybe later): folds, indentexpr (experimental), a `PackChanged` autocmd
@@ -54,16 +55,16 @@ Update this section at the end of every session.
   `vim.pack.del`; the user keeps the commented-out oil block, their call).
   Gotcha met: a non-breaking space (AltGr+Space, Norwegian layout) broke Lua.
   The user does NOT want `nbsp:none` in Hyprland; don't bring it up again.
-- **In progress: step 7 (#21), moving between files + tmux.** Split in two
-  commits, both `(#21)`:
-  - **7a:** the user does NOT want nvim/tmux crossing. `<C-h/j/k/l>` move
-    between nvim splits only (plain `<C-w>h` etc. keymaps in keymaps.lua);
-    tmux panes stay on prefix+o / prefix+number. vim-tmux-navigator was
-    tried and dropped (removed with `vim.pack.del`); tmux.conf unchanged.
-    Done and committed, together with Enter = `go_in_plus` in mini.files.
-  - **7b, next:** built-in movement (buffers, `<C-^>` alternate file,
-    jumplist `<C-o>`/`<C-i>`, marks), mostly explanation plus a few keymaps,
-    then decide on a harpoon-style quick list (harpoon2 vs. built-in marks).
+- Step 7 done (#21): `<C-h/j/k/l>` for nvim splits only (no tmux crossing;
+  tmux panes stay on prefix+o / prefix+q+number, vim-tmux-navigator dropped),
+  Enter = `go_in_plus` in mini.files, `<leader><leader>` alternate file,
+  `<leader>fm`/`<leader>fj`. Harpoon: try UPPERCASE marks first, add harpoon2
+  only if the user misses it.
+- **Practice pause (from 2026-11-16).** The user felt it was getting to be a
+  lot to remember and wants to *use* the config before adding more. Daily
+  reference: `docs/cheatsheet.md` (tiered: learn-first vs. later). Keep it
+  updated with every new keymap. When the user comes back, ask how the
+  practice went and what felt awkward *before* starting step 8 (#22, LSP).
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 

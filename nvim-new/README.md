@@ -69,7 +69,7 @@ message.
 | 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | ✅ |
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | ✅ |
-| 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | 🚧 |
+| 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | ✅ |
 | 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | |
 | 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | |
 | 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | |
@@ -139,6 +139,12 @@ order matters: `plugins.lua` runs after `keymaps.lua`, so a plugin that maps
 the same keys silently overrides yours (`:verbose map <C-h>` shows who won).
 In mini.files, `mappings = { go_in_plus = "<CR>" }` makes Enter open a file
 and close the explorer.
+
+**7b – Moving between files.** Mostly built-in: buffers (`]b`/`[b`, `:bd`),
+the alternate file (`<C-^>`, mapped to `<leader><leader>`), the jumplist
+(`<C-o>` back, `<C-i>` forward), and marks: lowercase `ma`/`'a` within a file,
+UPPERCASE `mA`/`'A` across files and restarts (a built-in harpoon). fzf-lua
+adds searchable lists: `<leader>fm` marks, `<leader>fj` jumps.
 
 ## Checking things
 

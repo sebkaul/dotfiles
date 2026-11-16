@@ -51,6 +51,10 @@ map("n", "<leader>fh", fzf.helptags, { desc = "Find help" })
 map("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })
 
 
+map("n", "<leader>fm", fzf.marks, { desc = "Find marks" })
+map("n", "<leader>fj", fzf.jumps, { desc = "Find in jumplist" })
+
+
 -- -- File Explorer Oil ------------------------------------------------------------
 -- local oil = require("oil")
 -- oil.setup({
