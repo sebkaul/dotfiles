@@ -78,6 +78,21 @@ message.
 | 13 | [#27](https://github.com/sebkaul/dotfiles/issues/27) | C support | |
 | 14 | [#28](https://github.com/sebkaul/dotfiles/issues/28) | Cutover: replace the old config | |
 
+### Wishlist (after the core steps, no issues yet)
+
+Collected 2026-11-17. Order and scope still open; each becomes its own step
+and issue when we get there.
+
+| Idea | Likely tool | Notes |
+|---|---|---|
+| Key hints popup | which-key.nvim or mini.clue | Shows the next possible keys after `<leader>`. Helps with "too much to remember", so maybe early |
+| Theme rework | `:FzfLua colorschemes` to preview candidates | Goes with step 12; maybe match Ghostty / tmux (nord) |
+| LaTeX: live compile + PDF | VimTeX + latexmk + zathura (SyncTeX) | zathura is VimTeX's recommended Linux viewer; needs `latexmk` (`texlive-binextra`); `texlab` LSP for completion |
+| Images in Neovim | snacks.nvim `image` (kitty graphics protocol) | Ghostty supports it; inside tmux needs `allow-passthrough`. GIFs show as a still frame |
+| Databases | vim-dadbod + vim-dadbod-ui | Browse schemas/tables and run queries in Neovim; or a TUI (harlequin, lazysql) in a tmux pane |
+| Undo history tree | built-in `nvim.undotree` (`:packadd nvim.undotree`) | Ships with Neovim 0.12, no plugin |
+| Markdown rendering | render-markdown.nvim | Headings, tables, checkboxes rendered in the buffer |
+
 ## Lua and Neovim notes, by step
 
 **0 – Setup.** Neovim runs `init.lua` from the config folder at startup.

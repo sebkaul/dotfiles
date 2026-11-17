@@ -60,6 +60,15 @@ Update this section at the end of every session.
   Enter = `go_in_plus` in mini.files, `<leader><leader>` alternate file,
   `<leader>fm`/`<leader>fj`. Harpoon: try UPPERCASE marks first, add harpoon2
   only if the user misses it.
+- **Practice feedback (2026-11-17):** little practice yet, but everything
+  tried worked. Favourites: `<leader><leader>`, marks (incl. the default
+  ones), `<C-o>`/`<C-i>`. Ready for step 8 (LSP), not started yet.
+- **Wishlist** (README "Wishlist" table): theme rework, LaTeX live preview
+  (VimTeX + zathura), images (snacks.image, Ghostty), databases (dadbod),
+  which-key/mini.clue, undotree, markdown rendering. The user asked about
+  these on 2026-11-17; no issues created yet. Suggest key hints early.
+- The user wants **at least one commit per day** they work on this (for the
+  contribution graph). Make sure each session ends with a commit.
 - **Practice pause (from 2026-11-16).** The user felt it was getting to be a
   lot to remember and wants to *use* the config before adding more. Daily
   reference: `docs/cheatsheet.md` (tiered: learn-first vs. later). Keep it
