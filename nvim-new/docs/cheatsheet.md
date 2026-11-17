@@ -54,6 +54,26 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |
 | `:reg` | Show what's in every register |
 
+## Files: create, save, rename
+
+| Command | What it does |
+|---|---|
+| `nv notes.md` (shell) | Open a file; if it doesn't exist, it's created on the first `:w` |
+| `:e notes.md` | Same, from inside Neovim (**e**dit) |
+| `:e %:h/notes.md` | New file next to the current file (`%:h` = current file's folder) |
+| `:w` | Save |
+| `:w notes.md` | Unnamed buffer: save it under that name. Named buffer: writes a *copy*, you stay in the original |
+| `:w ++p sub/dir/notes.md` | Same, and create missing folders (`++p` = parents) |
+| `:sav notes.md` | Save as: write under the new name *and* continue editing that one |
+| `:wq` or `:x` | Save and quit (`:x` only writes if something changed) |
+| `:q!` | Quit and throw away changes |
+| `:e!` | Reload the file from disk, discarding changes |
+| `:enew` | New empty, unnamed buffer |
+| `<leader>ee` then `o`, name, `Esc`, `=` | Create a file in the explorer (rename/delete there too) |
+| `<Tab>` after `:e ` | Complete file and folder names |
+
+`%` stands for the current file name in any `:` command (`:!python %` runs it).
+
 ## Inside the explorer (`<leader>ee`)
 
 | Keys | What it does |
