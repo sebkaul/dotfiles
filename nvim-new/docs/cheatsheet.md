@@ -69,7 +69,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `:q!` | Quit and throw away changes |
 | `:e!` | Reload the file from disk, discarding changes |
 | `:enew` | New empty, unnamed buffer |
-| `<leader>ee` then `o`, name, `Esc`, `=` | Create a file in the explorer (rename/delete there too) |
+| `<leader>ee` then `o`, name, `Esc`, `=`, `y` | Create a file in the explorer; only then Enter opens it |
 | `<Tab>` after `:e ` | Complete file and folder names |
 
 `%` stands for the current file name in any `:` command (`:!python %` runs it).
@@ -82,7 +82,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | **Enter** | Open file and close the explorer |
 | `<BS>` | Back to where you started |
 | `g?` | All keys |
-| Edit like text, then **`=`** | `o` new file (`name/` = folder), retype to rename, `dd` delete (to trash), `yy`/`p` copy, `dd`/`p` move |
+| Edit like text, then **`=`** (before Enter!) | `o` new file (`name/` = folder), retype to rename, `dd` delete (to trash), `yy`/`p` copy, `dd`/`p` move |
 
 ## Inside the fuzzy finder popup
 
