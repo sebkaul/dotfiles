@@ -37,8 +37,8 @@ map("x", ">", ">gv", { desc = "Indent right" })
 -- Scrolling ----------------------------------------------------------------------
 -- Replaces the old `scroll = 1` option, which Neovim resets on every resize.
 -- A count on <C-d>/<C-u> sets 'scroll' first, so "1<C-d>" always moves 1 line.
-map({ "n", "x" }, "<C-d>", "10<C-d>", { desc = "Scroll down one line" })
-map({ "n", "x" }, "<C-u>", "10<C-u>", { desc = "Scroll up one line" })
+map({ "n", "x" }, "<C-d>", "10<C-d>zz", { desc = "Scroll down 10 lines, centered" })
+map({ "n", "x" }, "<C-u>", "10<C-u>zz", { desc = "Scroll up 10 lines, centered" })
 
 -- Numbers ------------------------------------------------------------------------
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
