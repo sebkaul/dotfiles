@@ -20,6 +20,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>ee` | File explorer (`h` back, `l` in, **Enter** open + close, `q` quit) |
 | `<leader><leader>` | Jump to the previous file, and back again |
 | `Ctrl+o` / `Ctrl+i` | Back / forward through where you've been |
+| `Ctrl+d` / `Ctrl+u` | Scroll 10 lines down / up, cursor stays centered (`zz`) |
 | `Ctrl+h/j/k/l` | Move between splits |
 | `<leader>sv` / `<leader>sx` | Split vertically / close the split |
 | `"+y` / `"+p` | Copy to / paste from the system clipboard |
@@ -50,6 +51,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>fh` | Search Neovim's help |
 | `<leader>fj` | Searchable jumplist |
 | `<leader>ow` | Toggle line wrap |
+| `zz` / `zt` / `zb` | Put the cursor line in the middle / top / bottom of the screen |
 | `<leader>+` / `<leader>-` | Increment / decrement the number under the cursor |
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |
 | `:reg` | Show what's in every register |
