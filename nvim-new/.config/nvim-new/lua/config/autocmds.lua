@@ -7,7 +7,7 @@
 local group = vim.api.nvim_create_augroup("config", { clear = true })
 
 -- Replace non-breaking spaces (U+00A0) with normal spaces on save.
--- They sneak in when pasting from the web/chat, and Lua treats thgen as a name.
+-- They sneak in when pasting from the web/chat, and Lua treats them as a name.
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = group,
     desc = "Replace non-breaking spaces on save",
@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- With wrap off, Vim only scrolls sideways as far as needed to show the cursor
 -- On a line that fits the window, scroll fully back to the left.
-vim.api.nvim_create_autocmd("CursorMoved", {
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
     group = group,
     desc = "Scroll left on lines that fit the window",
     callback = function()

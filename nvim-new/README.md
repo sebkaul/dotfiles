@@ -86,8 +86,8 @@ message.
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | ✅ |
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | ✅ |
-| 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | 🚧 |
-| 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | |
+| 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | ✅ |
+| 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | 🚧 autopairs done, popup later |
 | 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | |
 | 11 | [#25](https://github.com/sebkaul/dotfiles/issues/25) | Git integration | |
 | 12 | [#26](https://github.com/sebkaul/dotfiles/issues/26) | UI polish + extras review | |
@@ -185,6 +185,15 @@ understands a whole project; Neovim's built-in client talks to it. Each
 connects; `{ buffer = args.buf }` makes a keymap exist only in that buffer.
 Defaults: `K`, `grr`, `grn`, `gra`, `gri`, `gO`, `]d`/`[d`. Without a server,
 `K` falls back to `man` and `gd` is Vim's plain "find local declaration".
+
+**9 – Autopairs (completion popup postponed).** mini.pairs closes `( [ { " '`
+as you type, steps over a closing bracket you type yourself, and Enter between
+a pair puts the cursor on an indented empty line. Insert mode has its own
+events: `CursorMoved` fires only in normal mode, `CursorMovedI` in insert
+mode; an autocmd can listen to both with `{ "CursorMoved", "CursorMovedI" }`.
+`for _, name in ipairs(list) do ... end` loops over a list. In Lua only
+`false` and `nil` are false, so `vim.fn.executable(...)` (returns 0/1) needs
+`== 1`.
 
 ## Checking things
 

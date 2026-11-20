@@ -3,7 +3,9 @@
 
 -- vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "bashls" })
 local servers = {
-    "lua_ls", "pyright", "ts_ls", "html", "cssls", "bashls", "clangd", "rust_analyzer", "gopls", "yamlls", "taplo", "marksman", "texlab", "tinymist", "dockerls",
+    "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls",
+    "bashls", "clangd", "rust_analyzer", "gopls", "yamlls",
+    "taplo", "marksman", "texlab", "tinymist", "dockerls",
 }
 
 -- Enable only servers whose program is installed (see packages.txt),

@@ -79,7 +79,8 @@ Update this section at the end of every session.
 - **`packages.txt`** (stow-ignored) lists every pacman dependency. Keep it in
   sync with every new server/tool. Install line is in the README.
 - **Step 9 (#23) is re-scoped by the user:** autopairs + Enter between
-  brackets (mini.pairs) now; **no completion popup yet** ("for later").
+  brackets (mini.pairs) done 2026-11-20; **no completion popup yet** ("for
+  later"). Scroll-left autocmd now also on `CursorMovedI` (o / Enter).
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.
