@@ -33,7 +33,7 @@ opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- table -> "tab:» 
 o.winborder = "rounded" -- default border for floating windows (0.11+)
 
 -- Scrolling (personal preference carried over from the old config) ----------
-o.scrolloff = 0 -- cursor may touch the top/bottom edge before scrolling
+o.scrolloff = 8 -- keep 8 lines visible above/below the cursor
 o.mousescroll = "ver:1,hor:1" -- mouse wheel scrolls one line at a time
 -- The old `scroll = 1` is now a keymap (keymaps.lua): Neovim resets the
 -- 'scroll' option whenever a window is resized.

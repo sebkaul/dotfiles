@@ -69,14 +69,17 @@ Update this section at the end of every session.
   these on 2026-11-17; no issues created yet. Suggest key hints early.
 - The user wants **at least one commit per day** they work on this (for the
   contribution graph). Make sure each session ends with a commit.
-- **In progress: step 8 (#22), LSP. Given 2026-11-17, part 1: Lua + Python.**
-  Servers from pacman: `lua-language-server`, `pyright` (basedpyright is not
-  in the Arch repos). Files: `lsp/lua_ls.lua`, `lsp/pyright.lua` (return a
-  table: cmd, filetypes, root_markers, settings), new `lua/config/lsp.lua`
-  with `vim.lsp.enable`, `vim.diagnostic.config({ virtual_text = true })`
-  and an `LspAttach` autocmd for buffer-local `gd`. Defaults taught: `K`,
-  `grn`, `gra`, `grr`, `gri`, `gO`, `[d`/`]d`, `<C-s>` (insert). Part 2
-  later: JS/TS/HTML/CSS/JSON/bash servers. Update cheat sheet with LSP keys.
+- **Step 8 (#22), LSP.** Part 1 (Lua + Python) done 2026-11-20 (`cbce31c`).
+  Gotcha met: pressing `K`/`gd` before the server attached gives the non-LSP
+  fallbacks (`man`, plain `gd`); lua_ls needs a few seconds to index.
+  **Part 2 given 2026-11-20:** `ts_ls`, `html`, `cssls`, `jsonls`, `bashls`
+  from pacman (`typescript-language-server`, `vscode-{html,css,json}-languageserver`,
+  `bash-language-server`, plus `shellcheck`). Binaries are
+  `vscode-*-language-server`. zsh files are not covered by bashls. Review,
+  commit `(#22)`, mark ✅.
+- Also done 2026-11-20: mini.animate scroll-only (80 ms), `<C-d>`/`<C-u>` =
+  `12jzz`/`12kzz` (not `<C-d>zz`, which wobbled near the top). The user
+  loves `cgn` + `.` for replacing.
 - **The user prefers small, spelled-out tasks:** say exactly which file and
   which lines, and explain every line. No puzzles.
 

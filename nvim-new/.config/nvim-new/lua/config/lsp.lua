@@ -1,7 +1,7 @@
 -- LSP: servers are defined in ../../lsp/<name>.lua, switched on here.
 -- See `:help lsp`.
 
-vim.lsp.enable({ "lua_ls", "pyright" })
+vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "bashls" })
 
 -- Show errors/warnings at the end of the line (off by default since 0.11).
 vim.diagnostic.config({ virtual_text = true })
