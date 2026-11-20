@@ -4,6 +4,10 @@
       "rev": "82ddfe6efc56480c052fd213e0cbb2f024dfd754",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "mini.animate": {
+      "rev": "74d003a30c0c37c23015032516237c8cad09af9f",
+      "src": "https://github.com/nvim-mini/mini.animate"
+    },
     "mini.files": {
       "rev": "52b6a0ff498edd0755c71c3476b30ba07798989a",
       "src": "https://github.com/nvim-mini/mini.files"

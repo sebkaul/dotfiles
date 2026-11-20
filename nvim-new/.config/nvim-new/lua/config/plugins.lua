@@ -7,6 +7,7 @@ vim.pack.add({
 	"https://github.com/ibhagwan/fzf-lua",
 	-- "https://github.com/stevearc/oil.nvim",
 	"https://github.com/nvim-mini/mini.files",
+	"https://github.com/nvim-mini/mini.animate",
 })
 
 -- Theme ------------------------------------------------------------
@@ -87,4 +88,17 @@ map("n", "<leader>ee", function()
         files.open(vim.api.nvim_buf_get_name(0))
     end
 end, { desc = "Toggle file explorer" })
+
+
+-- Smooth scrolling ----------------------------------------------------------------
+local animate = require("mini.animate")
+animate.setup({
+    scroll = {
+        timing = animate.gen_timing.linear({ duration = 80, unit = "total" }),
+    },
+    cursor = { enable = false },
+    resize = { enable = false },
+    open = { enable = false },
+    close = { enable = false },
+})
 
