@@ -40,11 +40,13 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 .config/nvim-new/
 ├── init.lua               entry point; only require()s modules, in order
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
+├── lsp/                   one file per language server (lua_ls.lua, pyright.lua)
 └── lua/config/
     ├── options.lua        editor options (vim.o / vim.opt)
     ├── keymaps.lua        leader key and general keymaps
     ├── autocmds.lua       autocommands (highlight on yank, ...)
-    └── plugins.lua        plugins (vim.pack.add) and their setup
+    ├── plugins.lua        plugins (vim.pack.add) and their setup
+    └── lsp.lua            vim.lsp.enable, diagnostics, LspAttach keymaps
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude
@@ -70,7 +72,7 @@ message.
 | 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
 | 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | ✅ |
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | ✅ |
-| 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | |
+| 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | 🚧 |
 | 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | |
 | 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | |
 | 11 | [#25](https://github.com/sebkaul/dotfiles/issues/25) | Git integration | |
@@ -160,6 +162,15 @@ the alternate file (`<C-^>`, mapped to `<leader><leader>`), the jumplist
 (`<C-o>` back, `<C-i>` forward), and marks: lowercase `ma`/`'a` within a file,
 UPPERCASE `mA`/`'A` across files and restarts (a built-in harpoon). fzf-lua
 adds searchable lists: `<leader>fm` marks, `<leader>fj` jumps.
+
+**8 – LSP.** A language server is a separate program (from pacman) that
+understands a whole project; Neovim's built-in client talks to it. Each
+`lsp/<name>.lua` returns a table: `cmd` (program to start), `filetypes`,
+`root_markers` (how to find the project root), `settings` (server-specific).
+`vim.lsp.enable({ names })` switches them on. `LspAttach` fires when a server
+connects; `{ buffer = args.buf }` makes a keymap exist only in that buffer.
+Defaults: `K`, `grr`, `grn`, `gra`, `gri`, `gO`, `]d`/`[d`. Without a server,
+`K` falls back to `man` and `gd` is Vim's plain "find local declaration".
 
 ## Checking things
 

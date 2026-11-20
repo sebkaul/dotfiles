@@ -57,6 +57,24 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |
 | `:reg` | Show what's in every register |
 
+## Code (LSP: Lua and Python so far)
+
+Only works once a server is attached (a few seconds after opening the file).
+Check with `:checkhealth vim.lsp`. If `K` says "No manual entry", the server
+isn't attached yet: that's Vim's fallback (`man`).
+
+| Keys | What it does |
+|---|---|
+| `gd` | Go to definition (back with `Ctrl+o`) |
+| `K` | Docs / type of the thing under the cursor (`K` again to enter, `q` to leave) |
+| `grr` | All references |
+| `grn` | Rename everywhere |
+| `gra` | Code actions ("fix this") |
+| `gri` | Go to implementation |
+| `gO` | Outline of this file |
+| `]d` / `[d` | Next / previous error or warning |
+| `Ctrl+s` (insert) | Show function parameters while typing a call |
+
 ## Files: create, save, rename
 
 | Command | What it does |
