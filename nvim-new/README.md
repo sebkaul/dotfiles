@@ -55,12 +55,20 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 ├── init.lua               entry point; only require()s modules, in order
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
 ├── lsp/                   one file per language server (16: lua_ls.lua, pyright.lua, ...)
-└── lua/config/
-    ├── options.lua        editor options (vim.o / vim.opt)
-    ├── keymaps.lua        leader key and general keymaps
-    ├── autocmds.lua       autocommands (highlight on yank, ...)
-    ├── plugins.lua        plugins (vim.pack.add) and their setup
-    └── lsp.lua            vim.lsp.enable, diagnostics, LspAttach keymaps
+└── lua/
+    ├── config/
+    │   ├── options.lua    editor options (vim.o / vim.opt)
+    │   ├── keymaps.lua    leader key and general keymaps
+    │   ├── autocmds.lua   autocommands (highlight on yank, ...)
+    │   └── lsp.lua        vim.lsp.enable, diagnostics, LspAttach keymaps
+    └── plugins/           one file per plugin: vim.pack.add + setup + its keys
+        ├── init.lua       require()s the files below, in order
+        ├── colorscheme.lua  tokyonight (first, so the rest uses it)
+        ├── treesitter.lua
+        ├── fzf.lua        fzf-lua + <leader>f… keys
+        ├── files.lua      mini.files + <leader>ee
+        ├── animate.lua    mini.animate (scroll only)
+        └── pairs.lua      mini.pairs
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude
@@ -68,7 +76,9 @@ sessions) and `docs/` (topic guides, e.g. `clipboard-and-registers.md`).
 
 `require("config.options")` finds `lua/config/options.lua`: Neovim searches
 the `lua/` folder of every directory on `runtimepath`, and dots in the name
-become slashes.
+become slashes. `require("plugins")` with no file name loads the folder's
+`init.lua` (`lua/plugins/init.lua`); `require` has no wildcards, so that file
+lists each plugin file by name. A new plugin = a new file + one line there.
 
 ## Steps
 
@@ -166,7 +176,7 @@ Lua treats it as a name, not whitespace.
 
 **7a – Splits.** `<C-w>` is Vim's window-command key (`<C-w>h` = go to the
 left window), so `map("n", "<C-h>", "<C-w>h")` makes it a single key. Load
-order matters: `plugins.lua` runs after `keymaps.lua`, so a plugin that maps
+order matters: the plugin files run after `keymaps.lua`, so a plugin that maps
 the same keys silently overrides yours (`:verbose map <C-h>` shows who won).
 In mini.files, `mappings = { go_in_plus = "<CR>" }` makes Enter open a file
 and close the explorer.

@@ -48,9 +48,12 @@ Update this section at the end of every session.
   but didn't paste it, and Claude couldn't reproduce it (health all green). If
   it comes back, ask for the `:messages` output.
 - Step 5 done (#19): fzf-lua, keymaps `<leader>f{f,r,s,c,b,h,k}` in
-  plugins.lua. The user decided plugin keymaps stay next to the plugin, not
-  in keymaps.lua. Plan: split plugins.lua into one file per plugin once it
-  gets long (around the LSP step).
+  the plugin file. The user decided plugin keymaps stay next to the plugin, not
+  in keymaps.lua. Split done 2026-11-20 (user did it): `lua/plugins/<name>.lua`,
+  each with its own `vim.pack.add` + setup + keys, loaded in order by
+  `lua/plugins/init.lua`. A new plugin = new file + one line in that list.
+  The old combined file sits at `lua/plugins/plugins.lua`, unused (not in the
+  init.lua list); the user may delete it.
 - Step 6 done (#20): mini.files replaced oil (oil removed with
   `vim.pack.del`; the user keeps the commented-out oil block, their call).
   Gotcha met: a non-breaking space (AltGr+Space, Norwegian layout) broke Lua.
@@ -81,6 +84,8 @@ Update this section at the end of every session.
 - **Step 9 (#23) is re-scoped by the user:** autopairs + Enter between
   brackets (mini.pairs) done 2026-11-20; **no completion popup yet** ("for
   later"). Scroll-left autocmd now also on `CursorMovedI` (o / Enter).
+- **Next:** key hints popup on `<leader>` (which-key or mini.clue), then step
+  10 (#24) format on save (conform.nvim + stylua/ruff/prettier/shfmt).
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.
