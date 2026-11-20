@@ -50,7 +50,8 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>to` `tx` `tn` `tp` `tf` | Tab: new, close, next, previous, current file in new tab |
 | `<leader>fh` | Search Neovim's help |
 | `<leader>fj` | Searchable jumplist |
-| `<leader>ow` | Toggle line wrap |
+| `<leader>ow` | Toggle line wrap (Markdown, text, commit messages wrap automatically) |
+| `gj` / `gk` | Down / up one *screen* line inside a wrapped line |
 | `zz` / `zt` / `zb` | Put the cursor line in the middle / top / bottom of the screen |
 | `<leader>+` / `<leader>-` | Increment / decrement the number under the cursor |
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |

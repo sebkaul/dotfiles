@@ -27,6 +27,7 @@ o.breakindent = true -- wrapped lines keep their indentation
 
 -- Display --------------------------------------------------------------------
 o.wrap = false -- long lines run off screen instead of wrapping
+-- o.linebreak = true -- ...and break between words, not in the middle of one
 o.list = true -- show invisible characters, using the table below
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- table -> "tab:» ,trail:·,nbsp:␣"
 o.winborder = "rounded" -- default border for floating windows (0.11+)

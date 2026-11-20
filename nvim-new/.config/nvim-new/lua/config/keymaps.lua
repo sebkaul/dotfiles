@@ -37,8 +37,8 @@ map("x", ">", ">gv", { desc = "Indent right" })
 -- Scrolling ----------------------------------------------------------------------
 -- Scroll 10 lines, then re-center the cursor line (zz). A count on <C-d>/<C-u>
 -- sets 'scroll' first, so it's always 10 (the option itself resets on resize).
-map({ "n", "x" }, "<C-d>", "10<C-d>zz", { desc = "Scroll down 10 lines, centered" })
 map({ "n", "x" }, "<C-u>", "10<C-u>zz", { desc = "Scroll up 10 lines, centered" })
+map({ "n", "x" }, "<C-d>", "10<C-d>zz", { desc = "Scroll down 10 lines, centered" })
 
 -- Numbers ------------------------------------------------------------------------
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" })
