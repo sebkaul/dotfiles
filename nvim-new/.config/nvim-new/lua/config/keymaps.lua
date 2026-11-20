@@ -48,10 +48,10 @@ map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 -- Splits ---------------------------------------------------------------------------
 -- Move between splits with Ctrl + h/j/k/l (tmux panes: prefix + o / prefix + q + number)
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left split"}) 
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower split"}) 
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper split"}) 
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right split"}) 
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left split"})
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower split"})
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper split"})
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right split"})
 
 -- Create and close splits
 map("n", "<leader>sv", "<C-w>v", { desc = "Split vertically" })

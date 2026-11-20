@@ -60,3 +60,23 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
+-- With wrap off, Vim only scrolls sideways as far as needed to show the cursor
+-- On a line that fits the window, scroll fully back to the left.
+vim.api.nvim_create_autocmd("CursorMoved", {
+    group = group,
+    desc = "Scroll left on lines that fit the window",
+    callback = function()
+        if vim.wo.wrap then
+            return -- wrapped windows never scroll sideways
+        end
+        local view = vim.fn.winsaveview()
+        if view.leftcol == 0 then
+            return -- already at the left edge
+        end
+        local info = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+        local text_width = info.width - info.textoff
+        if vim.fn.strdisplaywidth(vim.api.nvim_get_current_line()) < text_width then
+            vim.fn.winrestview({ leftcol = 0 })
+        end
+    end,
+})
