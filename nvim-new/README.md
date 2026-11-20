@@ -7,6 +7,20 @@ Neovim internals instead of copying a prebuilt setup. Tracked in
 The old config (`../nvim`, based on josean's setup with lazy.nvim) keeps working
 untouched until the cutover step. Both live side by side.
 
+## Dependencies
+
+All programs the config calls (Neovim, git, fzf, ripgrep, every language
+server, ...) are listed in `packages.txt`, official Arch repos only. On a new
+machine, or after adding a server:
+
+```bash
+grep -Ev '^\s*(#|$)' ~/dotfiles/nvim-new/packages.txt | sudo pacman -S --needed -
+```
+
+`--needed` skips what's already installed; `-` makes pacman read the package
+names from the pipe. Servers that aren't installed are skipped quietly at
+startup (`lua/config/lsp.lua` checks `vim.fn.executable`).
+
 ## Running it
 
 ```bash
@@ -40,7 +54,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 .config/nvim-new/
 ├── init.lua               entry point; only require()s modules, in order
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
-├── lsp/                   one file per language server (lua_ls.lua, pyright.lua)
+├── lsp/                   one file per language server (16: lua_ls.lua, pyright.lua, ...)
 └── lua/config/
     ├── options.lua        editor options (vim.o / vim.opt)
     ├── keymaps.lua        leader key and general keymaps

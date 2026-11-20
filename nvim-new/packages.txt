@@ -1,0 +1,55 @@
+# Everything nvim-new needs from the Arch repos (official repos only, no AUR).
+# Install or catch up on a machine (skips what's already installed):
+#
+#   grep -Ev '^\s*(#|$)' ~/dotfiles/nvim-new/packages.txt | sudo pacman -S --needed -
+#
+# One package per line; `#` starts a comment. Keep it in sync when adding a
+# server to lua/config/lsp.lua or a tool a plugin calls.
+
+# Core -----------------------------------------------------------------------
+neovim
+git
+wl-clipboard
+# treesitter: compiles parsers
+tree-sitter-cli
+gcc
+curl
+tar
+# fzf-lua: the finder itself, file search, text search
+fzf
+fd
+ripgrep
+
+# Language servers (lsp/<name>.lua) ------------------------------------------
+# lua_ls
+lua-language-server
+# pyright
+pyright
+# ts_ls (needs typescript)
+typescript-language-server
+typescript
+# html, cssls, jsonls
+vscode-html-languageserver
+vscode-css-languageserver
+vscode-json-languageserver
+# bashls, plus its checker
+bash-language-server
+shellcheck
+# clangd (C/C++)
+clang
+# rust_analyzer
+rust-analyzer
+# gopls (pulls in go)
+gopls
+# yamlls
+yaml-language-server
+# taplo (TOML)
+taplo-cli
+# marksman (Markdown)
+marksman
+# texlab (LaTeX)
+texlab
+# tinymist (Typst)
+tinymist
+# dockerls
+dockerfile-language-server

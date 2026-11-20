@@ -69,14 +69,20 @@ Update this section at the end of every session.
   these on 2026-11-17; no issues created yet. Suggest key hints early.
 - The user wants **at least one commit per day** they work on this (for the
   contribution graph). Make sure each session ends with a commit.
-- **Step 8 (#22), LSP.** Part 1 (Lua + Python) done 2026-11-20 (`cbce31c`).
-  Gotcha met: pressing `K`/`gd` before the server attached gives the non-LSP
-  fallbacks (`man`, plain `gd`); lua_ls needs a few seconds to index.
-  **Part 2 given 2026-11-20:** `ts_ls`, `html`, `cssls`, `jsonls`, `bashls`
-  from pacman (`typescript-language-server`, `vscode-{html,css,json}-languageserver`,
-  `bash-language-server`, plus `shellcheck`). Binaries are
-  `vscode-*-language-server`. zsh files are not covered by bashls. Review,
-  commit `(#22)`, mark ✅.
+- **Step 8 (#22), LSP: done.** 16 servers in `lsp/` (Lua, Python, JS/TS,
+  HTML, CSS, JSON, bash, C/C++, Rust, Go, YAML, TOML, Markdown, LaTeX, Typst,
+  Docker); Claude wrote the 9 added on 2026-11-20 (boilerplate). Not in the
+  Arch repos, so left out: Java (jdtls, AUR), SQL, PHP, Nix, ... `lsp.lua`
+  enables only servers whose `cmd[1]` is executable. Diagnostics pickers
+  `<leader>fd` / `<leader>fD`. Gotchas met: `K`/`gd` before attach give
+  non-LSP fallbacks; a second map on the same keys silently wins (`fj`).
+- **`packages.txt`** (stow-ignored) lists every pacman dependency. Keep it in
+  sync with every new server/tool. Install line is in the README.
+- **Step 9 (#23) is re-scoped by the user:** autopairs + Enter between
+  brackets (mini.pairs) now; **no completion popup yet** ("for later").
+- **Non-breaking spaces keep appearing, most likely when the user pastes code
+  from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
+  spaces. Prefer giving code the user can paste anyway, but don't rely on it.
 - Also done 2026-11-20: mini.animate scroll-only (80 ms), `<C-d>`/`<C-u>` =
   `12jzz`/`12kzz` (not `<C-d>zz`, which wobbled near the top). The user
   loves `cgn` + `.` for replacing.
