@@ -6,6 +6,18 @@
 -- every autocmd twice.
 local group = vim.api.nvim_create_augroup("config", { clear = true })
 
+-- Replace non-breaking spaces (U+00A0) with normal spaces on save.
+-- They sneak in when pasting from the web/chat, and Lua treats thgen as a name.
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = group,
+    desc = "Replace non-breaking spaces on save",
+    callback = function()
+        local view = vim.fn.winsaveview()
+        vim.cmd([[keeppatterns silent! %s/\%u00a0/ /g]])
+        vim.fn.winrestview(view)
+    end,
+})
+
 -- Briefly highlight yanked text.
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = group,
@@ -80,3 +92,5 @@ vim.api.nvim_create_autocmd("CursorMoved", {
         end
     end,
 })
+
+

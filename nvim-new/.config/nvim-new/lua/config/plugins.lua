@@ -6,8 +6,10 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/ibhagwan/fzf-lua",
 	-- "https://github.com/stevearc/oil.nvim",
+
 	"https://github.com/nvim-mini/mini.files",
 	"https://github.com/nvim-mini/mini.animate",
+	"https://github.com/nvim-mini/mini.pairs",
 })
 
 -- Theme ------------------------------------------------------------
@@ -103,3 +105,5 @@ animate.setup({
     close = { enable = false },
 })
 
+-- Auto-pairs ----------------------------------------------------------------------
+require("mini.pairs").setup()

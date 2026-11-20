@@ -12,6 +12,10 @@
       "rev": "52b6a0ff498edd0755c71c3476b30ba07798989a",
       "src": "https://github.com/nvim-mini/mini.files"
     },
+    "mini.pairs": {
+      "rev": "eea81afc1b4de898de9bb310c2225f9225fd42b9",
+      "src": "https://github.com/nvim-mini/mini.pairs"
+    },
     "nvim-treesitter": {
       "rev": "04f17886f75416dfdc25374c950a52c63f0e98fe",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"

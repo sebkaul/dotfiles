@@ -1,7 +1,19 @@
 -- LSP: servers are defined in ../../lsp/<name>.lua, switched on here.
 -- See `:help lsp`.
 
-vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "bashls" })
+-- vim.lsp.enable({ "lua_ls", "pyright", "ts_ls", "html", "cssls", "jsonls", "bashls" })
+local servers = {
+    "lua_ls", "pyright", "ts_ls", "html", "cssls", "bashls", "clangd", "rust_analyzer", "gopls", "yamlls", "taplo", "marksman", "texlab", "tinymist", "dockerls",
+}
+
+-- Enable only servers whose program is installed (see packages.txt),
+-- so a machine missing some of them starts without errors
+for _, name in ipairs(servers) do
+    local config = vim.lsp.config[name]
+    if config and vim.fn.executable(config.cmd[1]) == 1 then
+        vim.lsp.enable(name)
+    end
+end
 
 -- Show errors/warnings at the end of the line (off by default since 0.11).
 vim.diagnostic.config({ virtual_text = true })
