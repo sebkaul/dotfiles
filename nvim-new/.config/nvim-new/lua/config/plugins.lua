@@ -51,10 +51,11 @@ map("n", "<leader>fb", fzf.buffers, { desc = "Find open buffers" })
 map("n", "<leader>fh", fzf.helptags, { desc = "Find help" })
 map("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })
 
-
 map("n", "<leader>fm", fzf.marks, { desc = "Find marks" })
 map("n", "<leader>fj", fzf.jumps, { desc = "Find in jumplist" })
 
+map("n", "<leader>fd", fzf.diagnostics_document, { desc = "Find diagnostics (this file)" })
+map("n", "<leader>fD", fzf.diagnostics_workspace, { desc = "Find diagnostics (all files)" })
 
 -- -- File Explorer Oil ------------------------------------------------------------
 -- local oil = require("oil")
