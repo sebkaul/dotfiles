@@ -35,10 +35,12 @@ map("x", "<", "<gv", { desc = "Indent left" })
 map("x", ">", ">gv", { desc = "Indent right" })
 
 -- Scrolling ----------------------------------------------------------------------
--- Scroll 10 lines, then re-center the cursor line (zz). A count on <C-d>/<C-u>
-map({ "n", "x" }, "<C-u>", "12kzz", { desc = "Scroll up 10 lines, centered" })
--- sets 'scroll' first, so it's always 10 (the option itself resets on resize).
-map({ "n", "x" }, "<C-d>", "12jzz", { desc = "Scroll down 10 lines, centered" })
+-- Move the cursor 12 lines, then center it (zz). Near the top/bottom of the
+-- file zz can't center, so the screen only starts scrolling once the cursor
+-- has reached the middle. (12<C-d>zz scrolled down and back up there, which
+-- mini.animate made visible as a wobble.)
+map({ "n", "x" }, "<C-d>", "12jzz", { desc = "Down 12 lines, centered" })
+map({ "n", "x" }, "<C-u>", "12kzz", { desc = "Up 12 lines, centered" })
 
 -- Numbers ------------------------------------------------------------------------
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" })

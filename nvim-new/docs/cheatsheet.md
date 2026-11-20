@@ -20,7 +20,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>ee` | File explorer (`h` back, `l` in, **Enter** open + close, `q` quit) |
 | `<leader><leader>` | Jump to the previous file, and back again |
 | `Ctrl+o` / `Ctrl+i` | Back / forward through where you've been |
-| `Ctrl+d` / `Ctrl+u` | Scroll 10 lines down / up, cursor stays centered (`zz`) |
+| `Ctrl+d` / `Ctrl+u` | 12 lines down / up, cursor stays centered (`zz`) |
 | `Ctrl+h/j/k/l` | Move between splits |
 | `<leader>sv` / `<leader>sx` | Split vertically / close the split |
 | `"+y` / `"+p` | Copy to / paste from the system clipboard |
@@ -56,6 +56,15 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>+` / `<leader>-` | Increment / decrement the number under the cursor |
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |
 | `:reg` | Show what's in every register |
+
+## Search and replace
+
+| Keys | What it does |
+|---|---|
+| `/17` Enter, `cgn15` Esc, then `.` `.` | Replace matches one by one: `.` = next match + same change, `n` = skip one |
+| `*` | Search the word under the cursor (whole word only) |
+| `:%s//15/gc` | Replace the last search everywhere, asking `y`/`n` for each (empty pattern = last search) |
+| `:%s/17/15/g` | Replace everywhere without asking (live preview while typing) |
 
 ## Code (LSP: Lua and Python so far)
 
