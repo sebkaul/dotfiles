@@ -84,8 +84,10 @@ Update this section at the end of every session.
 - **Step 9 (#23) is re-scoped by the user:** autopairs + Enter between
   brackets (mini.pairs) done 2026-11-20; **no completion popup yet** ("for
   later"). Scroll-left autocmd now also on `CursorMovedI` (o / Enter).
-- **Next:** key hints popup on `<leader>` (which-key or mini.clue), then step
-  10 (#24) format on save (conform.nvim + stylua/ruff/prettier/shfmt).
+- **which-key done 2026-11-20** (`lua/plugins/whichkey.lua`, preset helix,
+  groups f/s/t/e/o). New `<leader>` prefixes need a `group` entry there.
+- **Next:** step 10 (#24) format on save (conform.nvim +
+  stylua/ruff/prettier/shfmt, add them to packages.txt).
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.

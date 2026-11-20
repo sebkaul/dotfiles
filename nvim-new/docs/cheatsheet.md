@@ -1,8 +1,9 @@
 # nv cheat sheet
 
 Everything below works in the current config. Leader = **Space**.
-Forgot something? **`<leader>fk`** and type a word: it searches every keymap
-by its description.
+Forgot something? Press **`Space`** (or `g`, `z`, `"`) and **wait**: a popup
+shows every key that can follow (`Backspace` = up a level, `Esc` = close).
+Or **`<leader>fk`** and type a word: it searches every keymap by its description.
 
 Tip: open this file in `nv` and set **`mC`** on it. From then on, **`'C`**
 brings you here from anywhere.

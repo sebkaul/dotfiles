@@ -68,7 +68,8 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
         ├── fzf.lua        fzf-lua + <leader>f… keys
         ├── files.lua      mini.files + <leader>ee
         ├── animate.lua    mini.animate (scroll only)
-        └── pairs.lua      mini.pairs
+        ├── pairs.lua      mini.pairs
+        └── whichkey.lua   which-key: key hints popup, <leader> group names
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude
@@ -79,6 +80,9 @@ the `lua/` folder of every directory on `runtimepath`, and dots in the name
 become slashes. `require("plugins")` with no file name loads the folder's
 `init.lua` (`lua/plugins/init.lua`); `require` has no wildcards, so that file
 lists each plugin file by name. A new plugin = a new file + one line there.
+which-key reads every map's `desc`, so good descriptions pay off;
+`wk.add({ { "<leader>f", group = "find" } })` names a prefix (a list of
+small tables, one per entry).
 
 ## Steps
 
@@ -111,7 +115,7 @@ and issue when we get there.
 
 | Idea | Likely tool | Notes |
 |---|---|---|
-| Key hints popup | which-key.nvim or mini.clue | Shows the next possible keys after `<leader>`. Helps with "too much to remember", so maybe early |
+| ~~Key hints popup~~ ✅ | which-key.nvim (2026-11-20) | Shows the next possible keys after `<leader>`, `g`, `z`, `"`, ... |
 | Theme rework | `:FzfLua colorschemes` to preview candidates | Goes with step 12; maybe match Ghostty / tmux (nord) |
 | LaTeX: live compile + PDF | VimTeX + latexmk + zathura (SyncTeX) | zathura is VimTeX's recommended Linux viewer; needs `latexmk` (`texlive-binextra`); `texlab` LSP for completion |
 | Images in Neovim | snacks.nvim `image` (kitty graphics protocol) | Ghostty supports it; inside tmux needs `allow-passthrough`. GIFs show as a still frame |
