@@ -71,7 +71,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-
 -- With wrap off, Vim only scrolls sideways as far as needed to show the cursor
 -- On a line that fits the window, scroll fully back to the left.
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
@@ -92,5 +91,3 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
         end
     end,
 })
-
-

@@ -10,8 +10,6 @@ return {
                 library = { vim.env.VIMRUNTIME },
                 checkThirdParty = false,
             },
-        }, 
+        },
     },
 }
-
-

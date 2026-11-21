@@ -1,5 +1,5 @@
 vim.pack.add({
-    "https://github.com/nvim-mini/mini.pairs"
+    "https://github.com/nvim-mini/mini.pairs",
 })
 
 -- Auto-pairs ----------------------------------------------------------------------

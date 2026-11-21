@@ -2,19 +2,19 @@
 -- See `:help vim.pack`.
 
 vim.pack.add({
-	"https://github.com/folke/tokyonight.nvim",
-	"https://github.com/nvim-treesitter/nvim-treesitter",
-	"https://github.com/ibhagwan/fzf-lua",
-	-- "https://github.com/stevearc/oil.nvim",
+    "https://github.com/folke/tokyonight.nvim",
+    "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/ibhagwan/fzf-lua",
+    -- "https://github.com/stevearc/oil.nvim",
 
-	"https://github.com/nvim-mini/mini.files",
-	"https://github.com/nvim-mini/mini.animate",
-	"https://github.com/nvim-mini/mini.pairs",
+    "https://github.com/nvim-mini/mini.files",
+    "https://github.com/nvim-mini/mini.animate",
+    "https://github.com/nvim-mini/mini.pairs",
 })
 
 -- Theme ------------------------------------------------------------
 require("tokyonight").setup({
-	style = "night",
+    style = "night",
 })
 
 vim.cmd.colorscheme("tokyonight")
@@ -22,22 +22,22 @@ vim.cmd.colorscheme("tokyonight")
 -- Treeesitter -------------------------------------------------------------------
 -- Parsers to download and compile (runs in the background, skips installed ones).
 require("nvim-treesitter").install({
-	"python",
-	"javascript",
-	"typescript",
-	"tsx",
-	"html",
-	"css",
-	"bash",
-	"json",
+    "python",
+    "javascript",
+    "typescript",
+    "tsx",
+    "html",
+    "css",
+    "bash",
+    "json",
 })
 
 -- Turn on treesitter highlighting whenever a file's type is detected.
 vim.api.nvim_create_autocmd("FileType", {
-	desc = "Start treesitter highlighting",
-	callback = function(args)
-		pcall(vim.treesitter.start, args.buf)
-	end,
+    desc = "Start treesitter highlighting",
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
 })
 
 -- Fuzzy Finder ----------------------------------------------------------------
@@ -67,7 +67,7 @@ map("n", "<leader>fD", fzf.diagnostics_workspace, { desc = "Find diagnostics (al
 --         max_height = 0.7, -- ... and 700% high
 --     },
 -- })
--- 
+--
 -- map("n", "<leader>ee", oil.toggle_float, { desc = "Toggle file explorer" })
 -- map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 
@@ -91,7 +91,6 @@ map("n", "<leader>ee", function()
         files.open(vim.api.nvim_buf_get_name(0))
     end
 end, { desc = "Toggle file explorer" })
-
 
 -- Smooth scrolling ----------------------------------------------------------------
 local animate = require("mini.animate")

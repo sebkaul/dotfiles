@@ -8,4 +8,3 @@ return {
         embeddedLanguages = { css = true, javascript = true },
     },
 }
-

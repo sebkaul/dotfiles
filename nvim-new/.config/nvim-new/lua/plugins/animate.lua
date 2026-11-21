@@ -1,6 +1,6 @@
 -- Animate ------------------------------------------------------------
 vim.pack.add({
-	"https://github.com/nvim-mini/mini.animate",
+    "https://github.com/nvim-mini/mini.animate",
 })
 
 -- Smooth scrolling ----------------------------------------------------------------

@@ -5,4 +5,3 @@ return {
     root_markers = { "package.json", "tsconfig.json", "jsonconfig.json", ".git" },
     init_options = { provideFormatter = true },
 }
-

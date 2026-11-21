@@ -1,5 +1,5 @@
 vim.pack.add({
-    "https://github.com/folke/which-key.nvim"
+    "https://github.com/folke/which-key.nvim",
 })
 
 -- Key hints -------------------------------------------------------------------------
@@ -19,5 +19,3 @@ wk.add({
     { "<leader>o", group = "options" },
     { "<leader>c", group = "code" },
 })
-
-

@@ -1,6 +1,6 @@
 vim.pack.add({
-	-- "https://github.com/stevearc/oil.nvim",
-	"https://github.com/nvim-mini/mini.files",
+    -- "https://github.com/stevearc/oil.nvim",
+    "https://github.com/nvim-mini/mini.files",
 })
 
 local map = vim.keymap.set
@@ -13,7 +13,7 @@ local map = vim.keymap.set
 --         max_height = 0.7, -- ... and 700% high
 --     },
 -- })
--- 
+--
 -- map("n", "<leader>ee", oil.toggle_float, { desc = "Toggle file explorer" })
 -- map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 
@@ -37,5 +37,3 @@ map("n", "<leader>ee", function()
         files.open(vim.api.nvim_buf_get_name(0))
     end
 end, { desc = "Toggle file explorer" })
-
-
