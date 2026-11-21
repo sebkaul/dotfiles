@@ -53,6 +53,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 ```
 .config/nvim-new/
 ├── init.lua               entry point; only require()s modules, in order
+├── .stylua.toml        stylua settings: 4 spaces (stylua's default is tabs)
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
 ├── lsp/                   one file per language server (16: lua_ls.lua, pyright.lua, ...)
 └── lua/
@@ -69,7 +70,8 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
         ├── files.lua      mini.files + <leader>ee
         ├── animate.lua    mini.animate (scroll only)
         ├── pairs.lua      mini.pairs
-        └── whichkey.lua   which-key: key hints popup, <leader> group names
+        ├── whichkey.lua   which-key: key hints popup, <leader> group names
+        └── format.lua     conform.nvim: format on save, <leader>cf
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude

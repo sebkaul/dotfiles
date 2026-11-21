@@ -53,3 +53,9 @@ texlab
 tinymist
 # dockerls
 dockerfile-language-server
+
+# Formatters (lua/plugins/format.lua)
+stylua
+ruff
+prettier
+shfmt

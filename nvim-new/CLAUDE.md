@@ -86,8 +86,13 @@ Update this section at the end of every session.
   later"). Scroll-left autocmd now also on `CursorMovedI` (o / Enter).
 - **which-key done 2026-11-20** (`lua/plugins/whichkey.lua`, preset helix,
   groups f/s/t/e/o). New `<leader>` prefixes need a `group` entry there.
-- **Next:** step 10 (#24) format on save (conform.nvim +
-  stylua/ruff/prettier/shfmt, add them to packages.txt).
+- **Step 10 (#24) formatting done 2026-11-21:** conform.nvim, format on save
+  (500 ms), stylua/ruff_format/prettier/shfmt(-i 4), LSP fallback for
+  C/Rust/Go/TOML, `<leader>cf`, `.stylua.toml` (4 spaces). Whole config
+  reformatted once in its own commit. Linting not done yet (ruff/shellcheck
+  via LSP already cover a lot). `:noautocmd w` = save without formatting.
+- **Next:** decide with the user: linting / diagnostics polish (rest of #24),
+  git integration (#25, gitsigns), or wishlist items.
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.

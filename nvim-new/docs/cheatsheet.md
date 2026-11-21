@@ -25,6 +25,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `Ctrl+h/j/k/l` | Move between splits |
 | `<leader>sv` / `<leader>sx` | Split vertically / close the split |
 | `"+y` / `"+p` | Copy to / paste from the system clipboard |
+| `u` / `Ctrl+r` | Undo / redo |
 | `jk` | Leave insert mode |
 | `Esc` | Also clears search highlighting |
 
@@ -57,6 +58,8 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `<leader>+` / `<leader>-` | Increment / decrement the number under the cursor |
 | `<C-r>0` (insert/`:`) | Insert the last yank while typing |
 | `:reg` | Show what's in every register |
+| `g-` / `g+` | Step back / forward through *all* undo states, even branches `Ctrl+r` can't reach |
+| `:earlier 5m` / `:later 5m` | The file as it was 5 minutes ago / back again (`10s`, `1h`, `1f` = one save) |
 
 ## Search and replace
 
@@ -67,7 +70,7 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `:%s//15/gc` | Replace the last search everywhere, asking `y`/`n` for each (empty pattern = last search) |
 | `:%s/17/15/g` | Replace everywhere without asking (live preview while typing) |
 
-## Code (LSP: Lua and Python so far)
+## Code (LSP + formatting)
 
 Only works once a server is attached (a few seconds after opening the file).
 Check with `:checkhealth vim.lsp`. If `K` says "No manual entry", the server
@@ -84,6 +87,9 @@ isn't attached yet: that's Vim's fallback (`man`).
 | `gO` | Outline of this file |
 | `]d` / `[d` | Next / previous error or warning |
 | `Ctrl+s` (insert) | Show function parameters while typing a call |
+| `<leader>cf` | Format the file (or the selection). Happens on every `:w` anyway |
+| `:noautocmd w` | Save *without* formatting (someone else's project) |
+| `:ConformInfo` | Which formatter runs for this file, and is it installed |
 
 ## Files: create, save, rename
 
