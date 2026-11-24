@@ -23,7 +23,7 @@ ripgrep
 # Language servers (lsp/<name>.lua) ------------------------------------------
 # lua_ls
 lua-language-server
-# pyright
+# pyright, plus ruff (linter as a server: lsp/ruff.lua; also formats, see below)
 pyright
 # ts_ls (needs typescript)
 typescript-language-server

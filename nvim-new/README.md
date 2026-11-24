@@ -55,7 +55,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 ├── init.lua               entry point; only require()s modules, in order
 ├── .stylua.toml        stylua settings: 4 spaces (stylua's default is tabs)
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
-├── lsp/                   one file per language server (16: lua_ls.lua, pyright.lua, ...)
+├── lsp/                   one file per language server (17: lua_ls.lua, pyright.lua, ...)
 └── lua/
     ├── config/
     │   ├── options.lua    editor options (vim.o / vim.opt)
@@ -104,7 +104,7 @@ message.
 | 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | ✅ |
 | 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | ✅ |
 | 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | 🚧 autopairs done, popup later |
-| 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | |
+| 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | ✅ |
 | 11 | [#25](https://github.com/sebkaul/dotfiles/issues/25) | Git integration | |
 | 12 | [#26](https://github.com/sebkaul/dotfiles/issues/26) | UI polish + extras review | |
 | 13 | [#27](https://github.com/sebkaul/dotfiles/issues/27) | C support | |

@@ -89,10 +89,14 @@ Update this section at the end of every session.
 - **Step 10 (#24) formatting done 2026-11-21:** conform.nvim, format on save
   (500 ms), stylua/ruff_format/prettier/shfmt(-i 4), LSP fallback for
   C/Rust/Go/TOML, `<leader>cf`, `.stylua.toml` (4 spaces). Whole config
-  reformatted once in its own commit. Linting not done yet (ruff/shellcheck
-  via LSP already cover a lot). `:noautocmd w` = save without formatting.
-- **Next:** decide with the user: linting / diagnostics polish (rest of #24),
-  git integration (#25, gitsigns), or wishlist items.
+  reformatted once in its own commit. `:noautocmd w` = save without formatting.
+- **#24 linting done 2026-11-24:** no lint plugin; `ruff server` as a 17th
+  LSP (`lsp/ruff.lua`), ruff's hover disabled in LspAttach so `K` shows only
+  pyright. Diagnostics: severity_sort, float with source, `<leader>cd`.
+  Other languages lint through their servers (shellcheck via bashls, ...).
+  Step 10 / #24 complete.
+- **Next:** git integration (#25, gitsigns), or a wishlist item (undotree
+  fits well; the user asked about undo/redo on 2026-11-21).
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.

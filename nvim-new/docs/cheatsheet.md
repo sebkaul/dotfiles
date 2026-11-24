@@ -86,6 +86,7 @@ isn't attached yet: that's Vim's fallback (`man`).
 | `gri` | Go to implementation |
 | `gO` | Outline of this file |
 | `]d` / `[d` | Next / previous error or warning |
+| `<leader>cd` or `Ctrl+w d` | Full diagnostic text in a popup, with its source (ruff, Pyright, ...) |
 | `Ctrl+s` (insert) | Show function parameters while typing a call |
 | `<leader>cf` | Format the file (or the selection). Happens on every `:w` anyway |
 | `:noautocmd w` | Save *without* formatting (someone else's project) |
