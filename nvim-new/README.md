@@ -53,7 +53,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
 ```
 .config/nvim-new/
 ├── init.lua               entry point; only require()s modules, in order
-├── .stylua.toml        stylua settings: 4 spaces (stylua's default is tabs)
+├── .stylua.toml        stylua: 4 spaces, short functions may stay on one line
 ├── nvim-pack-lock.json    lockfile: exact plugin revisions (never edit by hand)
 ├── lsp/                   one file per language server (17: lua_ls.lua, pyright.lua, ...)
 └── lua/
@@ -71,7 +71,8 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
         ├── animate.lua    mini.animate (scroll only)
         ├── pairs.lua      mini.pairs
         ├── whichkey.lua   which-key: key hints popup, <leader> group names
-        └── format.lua     conform.nvim: format on save, <leader>cf
+        ├── format.lua     conform.nvim: format on save, <leader>cf, <leader>of toggle
+        └── git.lua        gitsigns: changed lines in the sign column, ]h/[h, <leader>g…
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude
@@ -92,38 +93,38 @@ Each step is a sub-issue of #13, done in order, all on the branch
 `feat/13-nvim-from-scratch`. Every step has its own commit, `(#N)` in the
 message.
 
-| Step | Issue | Topic | Status |
-|---|---|---|---|
-| 0 | [#14](https://github.com/sebkaul/dotfiles/issues/14) | Setup + Lua primer | ✅ |
-| 1 | [#15](https://github.com/sebkaul/dotfiles/issues/15) | Options | ✅ |
-| 2 | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands | ✅ |
-| 3 | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅ |
-| 4 | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter | ✅ |
-| 5 | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder | ✅ |
-| 6 | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer | ✅ |
-| 7 | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux | ✅ |
-| 8 | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP | ✅ |
-| 9 | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets | 🚧 autopairs done, popup later |
-| 10 | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting | ✅ |
-| 11 | [#25](https://github.com/sebkaul/dotfiles/issues/25) | Git integration | |
-| 12 | [#26](https://github.com/sebkaul/dotfiles/issues/26) | UI polish + extras review | |
-| 13 | [#27](https://github.com/sebkaul/dotfiles/issues/27) | C support | |
-| 14 | [#28](https://github.com/sebkaul/dotfiles/issues/28) | Cutover: replace the old config | |
+| Step | Issue                                                | Topic                                | Status                         |
+| ---- | ---------------------------------------------------- | ------------------------------------ | ------------------------------ |
+| 0    | [#14](https://github.com/sebkaul/dotfiles/issues/14) | Setup + Lua primer                   | ✅                             |
+| 1    | [#15](https://github.com/sebkaul/dotfiles/issues/15) | Options                              | ✅                             |
+| 2    | [#16](https://github.com/sebkaul/dotfiles/issues/16) | Keymaps + autocommands               | ✅                             |
+| 3    | [#17](https://github.com/sebkaul/dotfiles/issues/17) | Plugins via `vim.pack` + colorscheme | ✅                             |
+| 4    | [#18](https://github.com/sebkaul/dotfiles/issues/18) | Treesitter                           | ✅                             |
+| 5    | [#19](https://github.com/sebkaul/dotfiles/issues/19) | Fuzzy finder                         | ✅                             |
+| 6    | [#20](https://github.com/sebkaul/dotfiles/issues/20) | Floating file explorer               | ✅                             |
+| 7    | [#21](https://github.com/sebkaul/dotfiles/issues/21) | Moving between files + tmux          | ✅                             |
+| 8    | [#22](https://github.com/sebkaul/dotfiles/issues/22) | LSP                                  | ✅                             |
+| 9    | [#23](https://github.com/sebkaul/dotfiles/issues/23) | Completion + snippets                | 🚧 autopairs done, popup later |
+| 10   | [#24](https://github.com/sebkaul/dotfiles/issues/24) | Diagnostics, formatting, linting     | ✅                             |
+| 11   | [#25](https://github.com/sebkaul/dotfiles/issues/25) | Git integration                      |                                |
+| 12   | [#26](https://github.com/sebkaul/dotfiles/issues/26) | UI polish + extras review            |                                |
+| 13   | [#27](https://github.com/sebkaul/dotfiles/issues/27) | C support                            |                                |
+| 14   | [#28](https://github.com/sebkaul/dotfiles/issues/28) | Cutover: replace the old config      |                                |
 
 ### Wishlist (after the core steps, no issues yet)
 
 Collected 2026-11-17. Order and scope still open; each becomes its own step
 and issue when we get there.
 
-| Idea | Likely tool | Notes |
-|---|---|---|
-| ~~Key hints popup~~ ✅ | which-key.nvim (2026-11-20) | Shows the next possible keys after `<leader>`, `g`, `z`, `"`, ... |
-| Theme rework | `:FzfLua colorschemes` to preview candidates | Goes with step 12; maybe match Ghostty / tmux (nord) |
-| LaTeX: live compile + PDF | VimTeX + latexmk + zathura (SyncTeX) | zathura is VimTeX's recommended Linux viewer; needs `latexmk` (`texlive-binextra`); `texlab` LSP for completion |
-| Images in Neovim | snacks.nvim `image` (kitty graphics protocol) | Ghostty supports it; inside tmux needs `allow-passthrough`. GIFs show as a still frame |
-| Databases | vim-dadbod + vim-dadbod-ui | Browse schemas/tables and run queries in Neovim; or a TUI (harlequin, lazysql) in a tmux pane |
-| Undo history tree | built-in `nvim.undotree` (`:packadd nvim.undotree`) | Ships with Neovim 0.12, no plugin |
-| Markdown rendering | render-markdown.nvim | Headings, tables, checkboxes rendered in the buffer |
+| Idea                      | Likely tool                                         | Notes                                                                                                           |
+| ------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| ~~Key hints popup~~ ✅    | which-key.nvim (2026-11-20)                         | Shows the next possible keys after `<leader>`, `g`, `z`, `"`, ...                                               |
+| Theme rework              | `:FzfLua colorschemes` to preview candidates        | Goes with step 12; maybe match Ghostty / tmux (nord)                                                            |
+| LaTeX: live compile + PDF | VimTeX + latexmk + zathura (SyncTeX)                | zathura is VimTeX's recommended Linux viewer; needs `latexmk` (`texlive-binextra`); `texlab` LSP for completion |
+| Images in Neovim          | snacks.nvim `image` (kitty graphics protocol)       | Ghostty supports it; inside tmux needs `allow-passthrough`. GIFs show as a still frame                          |
+| Databases                 | vim-dadbod + vim-dadbod-ui                          | Browse schemas/tables and run queries in Neovim; or a TUI (harlequin, lazysql) in a tmux pane                   |
+| Undo history tree         | built-in `nvim.undotree` (`:packadd nvim.undotree`) | Ships with Neovim 0.12, no plugin                                                                               |
+| Markdown rendering        | render-markdown.nvim                                | Headings, tables, checkboxes rendered in the buffer                                                             |
 
 ## Lua and Neovim notes, by step
 
@@ -166,7 +167,7 @@ errors instead of showing them (filetypes without a parser). Look around with
 
 **5 – Fuzzy finder.** fzf-lua drives the `fzf` binary (plus `fd` and `rg`).
 `local fzf = require("fzf-lua")` keeps the module in a variable; mappings pass
-its functions as rhs *without* `()` so they run on keypress, not at startup.
+its functions as rhs _without_ `()` so they run on keypress, not at startup.
 Plugin keymaps live next to the plugin: `keymaps.lua` runs before the plugins
 are loaded, so `require` of a plugin there would fail. (A `"<cmd>FzfLua
 files<CR>"` string would work, since it is only looked up on keypress.)

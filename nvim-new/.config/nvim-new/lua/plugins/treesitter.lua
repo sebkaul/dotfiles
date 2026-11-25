@@ -18,7 +18,5 @@ require("nvim-treesitter").install({
 -- Turn on treesitter highlighting whenever a file's type is detected.
 vim.api.nvim_create_autocmd("FileType", {
     desc = "Start treesitter highlighting",
-    callback = function(args)
-        pcall(vim.treesitter.start, args.buf)
-    end,
+    callback = function(args) pcall(vim.treesitter.start, args.buf) end,
 })

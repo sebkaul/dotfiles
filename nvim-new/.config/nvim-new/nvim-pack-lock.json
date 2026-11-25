@@ -8,6 +8,10 @@
       "rev": "82ddfe6efc56480c052fd213e0cbb2f024dfd754",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "gitsigns.nvim": {
+      "rev": "ea38d317af34f8ffcfbaf0f0dcc1471736661a4c",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "mini.animate": {
       "rev": "74d003a30c0c37c23015032516237c8cad09af9f",
       "src": "https://github.com/nvim-mini/mini.animate"

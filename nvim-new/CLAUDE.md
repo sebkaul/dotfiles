@@ -95,8 +95,14 @@ Update this section at the end of every session.
   pyright. Diagnostics: severity_sort, float with source, `<leader>cd`.
   Other languages lint through their servers (shellcheck via bashls, ...).
   Step 10 / #24 complete.
-- **Next:** git integration (#25, gitsigns), or a wishlist item (undotree
-  fits well; the user asked about undo/redo on 2026-11-21).
+- **2026-11-25:** `<leader>of` toggles format on save (`vim.g.disable_autoformat`,
+  `format_on_save` as a function). `.stylua.toml` has
+  `collapse_simple_statement = "FunctionOnly"` (user wants one-line
+  `function() x() end` maps). Explained ignore comments per tool.
+- **#25 git, part 1 done 2026-11-25:** gitsigns (`lua/plugins/git.lua`),
+  `]h`/`[h`, `<leader>g{p,r,s,b,d}`.
+- **Next:** #25 part 2, lazygit inside nv on `<leader>gg` (user already
+  has a lazygit config in `../lazygit`). Then undotree (wishlist) fits well.
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.

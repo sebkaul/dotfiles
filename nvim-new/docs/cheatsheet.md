@@ -61,6 +61,19 @@ The daily loop: find a file, move around, edit, copy, switch, repeat.
 | `g-` / `g+` | Step back / forward through *all* undo states, even branches `Ctrl+r` can't reach |
 | `:earlier 5m` / `:later 5m` | The file as it was 5 minutes ago / back again (`10s`, `1h`, `1f` = one save) |
 
+## Git (gitsigns)
+
+A *hunk* = one block of changed lines, marked in the sign column.
+
+| Keys | What it does |
+|---|---|
+| `]h` / `[h` | Next / previous change |
+| `<leader>gp` | Preview the change (old vs new) |
+| `<leader>gr` | Reset the change to the last commit |
+| `<leader>gs` | Stage / unstage the change |
+| `<leader>gb` | Who wrote this line, when, which commit |
+| `<leader>gd` | Diff the whole file against the last commit |
+
 ## Search and replace
 
 | Keys | What it does |
@@ -89,7 +102,9 @@ isn't attached yet: that's Vim's fallback (`man`).
 | `<leader>cd` or `Ctrl+w d` | Full diagnostic text in a popup, with its source (ruff, Pyright, ...) |
 | `Ctrl+s` (insert) | Show function parameters while typing a call |
 | `<leader>cf` | Format the file (or the selection). Happens on every `:w` anyway |
-| `:noautocmd w` | Save *without* formatting (someone else's project) |
+| `:noautocmd w` | Save once *without* formatting (skips all save autocmds) |
+| `<leader>of` | Toggle format on save (until restart) |
+| `-- stylua: ignore` | Above a statement: stylua leaves it alone. Ruff: `# fmt: skip`, prettier: `// prettier-ignore` |
 | `:ConformInfo` | Which formatter runs for this file, and is it installed |
 
 ## Files: create, save, rename

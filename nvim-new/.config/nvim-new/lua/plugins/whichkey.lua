@@ -18,4 +18,5 @@ wk.add({
     { "<leader>e", group = "explorer" },
     { "<leader>o", group = "options" },
     { "<leader>c", group = "code" },
+    { "<leader>g", group = "git" },
 })

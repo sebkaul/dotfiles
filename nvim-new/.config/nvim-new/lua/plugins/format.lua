@@ -25,8 +25,16 @@ conform.setup({
     },
     -- No formatter listed (C, Rust, Go, TOML)? Ask the language server instead.
     default_format_opts = { lsp_format = "fallback" },
-    -- Format on every :w. Give up after 500ms so saving never hangs.
-    format_on_save = { timeout_ms = 500 },
+    -- Format on every :w, unless switched off with <leader>of.
+    -- A function instead of a table: conform calls it on each save and only formats if it
+    -- returns options. Returning nothing = skip this save.
+    format_on_save = function()
+        if vim.g.disable_autoformat then
+            return
+        end
+        return { timeout_ms = 500 }
+    end,
+
     -- Extra arguments for one formatter: shfmt uses tabs unless told "-i 4".
     formatters = {
         shfmt = { prepend_args = { "-i", "4" } },
@@ -35,3 +43,7 @@ conform.setup({
 
 local map = vim.keymap.set
 map({ "n", "x" }, "<leader>cf", conform.format, { desc = "Format file (or selection)" })
+map("n", "<leader>of", function()
+    vim.g.disable_autoformat = not vim.g.disable_autoformat
+    vim.notify("Format on save: " .. (vim.g.disable_autoformat and "off" or "on"))
+end, { desc = "Toggle format on save" })

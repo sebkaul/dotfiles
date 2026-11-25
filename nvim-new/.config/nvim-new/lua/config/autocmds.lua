@@ -22,9 +22,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = group,
     desc = "Highlight yanked text",
-    callback = function()
-        vim.hl.on_yank({ timeout = 150 })
-    end,
+    callback = function() vim.hl.on_yank({ timeout = 150 }) end,
 })
 
 -- Reopen a file at the line where you left it. The '" mark holds that
@@ -47,9 +45,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Keep splits evenly sized when the terminal (or tmux pane) is resized.
 -- A named local function works as a callback just like an anonymous one.
-local function equalize_splits()
-    vim.cmd("tabdo wincmd =")
-end
+local function equalize_splits() vim.cmd("tabdo wincmd =") end
 
 vim.api.nvim_create_autocmd("VimResized", {
     group = group,
