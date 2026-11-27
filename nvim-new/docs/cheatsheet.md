@@ -73,6 +73,7 @@ A *hunk* = one block of changed lines, marked in the sign column.
 | `<leader>gs` | Stage / unstage the change |
 | `<leader>gb` | Who wrote this line, when, which commit |
 | `<leader>gd` | Diff the whole file against the last commit |
+| `<leader>gg` | Lazygit in a floating window (`q` closes it) |
 
 ## Search and replace
 
@@ -99,6 +100,7 @@ isn't attached yet: that's Vim's fallback (`man`).
 | `gri` | Go to implementation |
 | `gO` | Outline of this file |
 | `]d` / `[d` | Next / previous error or warning |
+| `<leader>ox` | Hide / show all diagnostics (statusline says `[diagnostics off]`) |
 | `<leader>cd` or `Ctrl+w d` | Full diagnostic text in a popup, with its source (ruff, Pyright, ...) |
 | `Ctrl+s` (insert) | Show function parameters while typing a call |
 | `<leader>cf` | Format the file (or the selection). Happens on every `:w` anyway |

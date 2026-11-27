@@ -42,6 +42,17 @@ vim.diagnostic.config({
 -- This opens the full text in a popup (built-in: Ctrl+w d does the same).
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Show diagnostic in popup" })
 
+-- Hide/show all diagnostics, e.g. While writing something half-finished.
+vim.keymap.set("n", "<leader>ox", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+    vim.cmd.redrawstatus() -- redraw the statusline now, not on the next cursor move
+end, { desc = "Toggle diagnostics" })
+
+-- Statusline: "[diagnostics off]" at the start while they're hidden.
+-- Keeps Neovim's default statusline and only puts one piece in front of it.
+vim.o.statusline = "%{%v:lua.vim.diagnostic.is_enabled() ? '' : '%#DiagnosticWarn#[diagnostics off]%* '%}"
+    .. vim.o.statusline
+
 -- Keymaps that only make sense when a server is running in this buffer.
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp", { clear = true }),

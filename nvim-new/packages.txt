@@ -54,6 +54,9 @@ tinymist
 # dockerls
 dockerfile-language-server
 
+# Git (lua/plugins/git.lua): gitsigns uses git (Core); <leader>gg opens lazygit
+lazygit
+
 # Formatters (lua/plugins/format.lua)
 stylua
 ruff

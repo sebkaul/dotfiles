@@ -72,7 +72,7 @@ This folder is a Stow package: `stow nvim-new` links `.config/nvim-new` to
         ├── pairs.lua      mini.pairs
         ├── whichkey.lua   which-key: key hints popup, <leader> group names
         ├── format.lua     conform.nvim: format on save, <leader>cf, <leader>of toggle
-        └── git.lua        gitsigns: changed lines in the sign column, ]h/[h, <leader>g…
+        └── git.lua        gitsigns (]h/[h, <leader>g…), lazygit float on <leader>gg
 ```
 
 Next to it: `CLAUDE.md` (working notes and current status, for Claude

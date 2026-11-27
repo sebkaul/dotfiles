@@ -101,8 +101,21 @@ Update this section at the end of every session.
   `function() x() end` maps). Explained ignore comments per tool.
 - **#25 git, part 1 done 2026-11-25:** gitsigns (`lua/plugins/git.lua`),
   `]h`/`[h`, `<leader>g{p,r,s,b,d}`.
-- **Next:** #25 part 2, lazygit inside nv on `<leader>gg` (user already
-  has a lazygit config in `../lazygit`). Then undotree (wishlist) fits well.
+- **#25 part 2 done 2026-11-27:** lazygit in a floating terminal on
+  `<leader>gg` (no plugin; jobstart term=true, on_exit closes + checktime).
+  `<leader>ox` toggles diagnostics, `[diagnostics off]` prepended to the
+  default statusline. `DiagnosticUnnecessary` cleared (whole unused function
+  was dimmed while writing; user found it very annoying).
+- The user turned `collapse_simple_statement` back OFF themselves (commit
+  89ded38, their own commit message). Its comment there ("Turn off
+  autoformatting on each save") is inaccurate; mentioned to the user.
+- **For #26 (statusline/theme):** the user noticed the inconsistency that
+  `[diagnostics off]` is persistent but format-off only notifies. Build a
+  proper statusline then (both indicators, maybe git branch).
+- **Open question 2026-11-27:** user wants the explorer centered and with git
+  status icons (old config: nvim-tree had them). Options given: yazi in a
+  float (same pattern as lazygit, git.yazi plugin) vs. keep mini.files and
+  add ~50 lines (centering + git extmarks).
 - **Non-breaking spaces keep appearing, most likely when the user pastes code
   from Claude's output.** Fix: a `BufWritePre` autocmd replacing U+00A0 with
   spaces. Prefer giving code the user can paste anyway, but don't rely on it.
