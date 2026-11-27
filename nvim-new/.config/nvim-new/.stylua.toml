@@ -1,3 +1,7 @@
 indent_type = "Spaces"
 indent_width = 4
-# collapse_simple_statement = "FunctionOnly" # Turn off autoformatting on each save
+# Uncomment to let short functions stay on one line:
+#   map("n", "]h", function() gs.nav_hunk("next") end, ...)
+# Off = stylua always spreads a function over several lines.
+# (Formatting on save itself is toggled with <leader>of, not here.)
+# collapse_simple_statement = "FunctionOnly"
