@@ -15,10 +15,6 @@ calibre = [
     { run = 'ebook-viewer %s1', orphan = true }
 ]
 
-foliate = [
-    { run = 'foliate %s1', orphan = true }
-]
-
 mpvv = [
     { run = 'mpvv %s', block = true }
 ]
@@ -27,7 +23,6 @@ mpvv = [
 rules = [
     { mime = "application/pdf", use = "zathura" },
     { url = "*.azw3", use = "calibre" },
-    { url = "*.epub", use = "foliate" },
     { mime = "image/*", use = "imv" },
     { mime = "video/*", use = "mpvv" },
     { url = "*", use = "nvim" },
